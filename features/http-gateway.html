@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTTP/HTTPS Gateway — Donk</title>
+    <meta name="description" content="Built-in forward proxy with breakpoints, session recording, HAR import/export, replay, diff, throttle, block, and system override.">
+    <link rel="icon" type="image/png" href="../../assets/donk_64.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDCEDXD09F"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LDCEDXD09F');
+</script>
+</head>
+<body>
+<nav class="nav" id="nav"></nav>
+
+<section class="feature-page-hero">
+    <div class="container">
+        <span class="section-label">Gateway</span>
+        <h1>The network is not a black box.<br><span class="text-gradient">Not anymore.</span></h1>
+        <p class="subtitle">Every HTTP and HTTPS request — visible, inspectable, and under your control. Breakpoints. Session replay. HAR import/export. Throttle. Block. System override.</p>
+    </div>
+</section>
+
+<section class="feature-content">
+    <div class="container">
+        <div class="feature-text">
+            <p>An API call fails. You open Chrome DevTools, find the request, look at the response — it's a 401. But was it a missing header? An expired token? A wrong endpoint? DevTools shows you what happened, but you can't change the request and retry without going back to your code, editing it, recompiling, and refreshing. And that's just the browser side. If the failing call was made server-side — from your backend to a third-party API — Chrome DevTools can't see it at all.</p>
+            <p>Donk's gateway is a built-in forward proxy that sees every request your dev environment makes — both from the browser and from your backend server. Set a breakpoint on any domain or URL pattern. When a request matches, it pauses mid-flight. You see the full request — headers, body, query parameters. Modify anything. Resume, or drop the request entirely. Set breakpoints on responses too — see what came back before your code processes it.</p>
+
+            <h2>Core Capabilities</h2>
+            <ul class="feature-bullets">
+                <li><strong>Live traffic log</strong> — every request with method, URL, status, and timing</li>
+                <li><strong>Breakpoints</strong> — pause on request or response. Inspect headers and body. Modify. Resume or drop.</li>
+                <li><strong>Session recording</strong> — record all traffic. Replay every request later against your current server.</li>
+                <li><strong>HAR 1.2 import/export</strong> — import from Chrome, Firefox, Charles, Fiddler, or mitmproxy</li>
+                <li><strong>Session diff</strong> — compare two recorded sessions. See added, removed, changed endpoints.</li>
+                <li><strong>Throttle</strong> — add latency and bandwidth limits per domain. Test loading states.</li>
+                <li><strong>URL blocking</strong> — block specific domains or URL patterns. Ads, trackers, distractions.</li>
+                <li><strong>System override</strong> — one toggle to route all system traffic through the gateway. Every browser, every app.</li>
+                <li>HTTPS decryption via the Donk CA — inspect encrypted traffic without warnings</li>
+                <li>Works alongside API mocking — mocked requests show as such in the traffic log</li>
+            </ul>
+
+            <div class="feature-video-placeholder">
+                <div class="video-icon">🎬</div>
+                <p>Video: 40–50 seconds. Setting a breakpoint on Stripe API calls. A payment request pauses. Edit the amount. Resume. See the modified response.</p>
+            </div>
+        </div>
+        <div class="feature-nav">
+            <a href="api-mocking.html">← API Mocking</a>
+            <a href="donk-doctor.html">Donk Doctor →</a>
+        </div>
+    </div>
+</section>
+
+<section class="feature-cta-section"><div class="container"><h3>Download Donk</h3><p>Windows 10/11 · ~230 MB · No dependencies</p><a href="../#download" class="btn btn-primary">Download for Windows</a></div></section>
+<footer><div class="container"><div class="footer-inner"><div class="footer-brand"><img src="../assets/donk_64.png" alt="Donk"> Donk</div><div class="footer-links"><a href="../">Home</a><a href="./">Features</a></div></div></div></footer>
+<script>const o=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');o.unobserve(x.target)}})},{threshold:.1});document.querySelectorAll('.reveal').forEach(el=>o.observe(el));</script>
+<script src="../assets/feature-nav.js"></script>
+</body>
+</html>

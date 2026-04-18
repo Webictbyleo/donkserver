@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VS Code Extension — Donk</title>
+    <meta name="description" content="Manage servers, databases, runtimes, and secrets from the VS Code sidebar. Copilot tools, donk.toml IntelliSense, Donk Shell.">
+    <link rel="icon" type="image/png" href="../../assets/donk_64.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDCEDXD09F"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LDCEDXD09F');
+</script>
+</head>
+<body>
+<nav class="nav" id="nav"></nav>
+
+<section class="feature-page-hero">
+    <div class="container">
+        <span class="section-label">VS Code</span>
+        <h1>Donk, right inside<br><span class="text-gradient">your editor.</span></h1>
+        <p class="subtitle">Manage servers, databases, runtimes, and secrets from the VS Code sidebar. Start, stop, restart, view logs, toggle tunnels — all without leaving the editor.</p>
+    </div>
+</section>
+
+<section class="feature-content">
+    <div class="container">
+        <div class="feature-text">
+            <p>You're deep in a coding session. Focus mode. You need to restart a server because you changed an env var. Alt-tab to Donk, find the server, click restart, alt-tab back... or you could just click the restart icon in the VS Code sidebar and never leave the editor.</p>
+            <p>The Donk VS Code extension connects to the running Donk daemon and exposes everything through sidebar panels. Servers, databases, runtimes, secrets, workers, commands — all in a tree view. Click to start/stop. Right-click for more actions. Logs stream in a dedicated output channel.</p>
+
+            <h2>Extension Features</h2>
+            <ul class="feature-bullets">
+                <li><strong>Sidebar panels</strong> — Servers, Databases, Runtimes, Secrets, Commands, Workers</li>
+                <li><strong>IntelliSense for <code>donk.toml</code></strong> — autocomplete for server names, framework backends, database engines</li>
+                <li><strong>Copilot tools</strong> — GitHub Copilot can start/stop servers, create databases, manage secrets via Donk tools</li>
+                <li><strong>Donk Shell</strong> — integrated terminal with the correct runtime on PATH</li>
+                <li><strong>Runtime configuration</strong> — prompt to use Donk's bundled Python/Node for the workspace</li>
+                <li><strong>Status bar</strong> — always see how many servers are running and the connection state</li>
+                <li>Included with Donk</li>
+            </ul>
+
+            <div class="feature-video-placeholder">
+                <div class="video-icon">🎬</div>
+                <p>Video: 35–45 seconds. VS Code sidebar tour — starting a server, viewing logs, using IntelliSense in donk.toml, Copilot asking Donk to create a database.</p>
+            </div>
+        </div>
+        <div class="feature-nav">
+            <a href="wsl-integration.html">← WSL</a>
+            <a href="cli-rest-api.html">CLI & API →</a>
+        </div>
+    </div>
+</section>
+
+<section class="feature-cta-section"><div class="container"><h3>Download Donk</h3><p>Windows 10/11 · ~230 MB · No dependencies</p><a href="../#download" class="btn btn-primary">Download for Windows</a></div></section>
+<footer><div class="container"><div class="footer-inner"><div class="footer-brand"><img src="../assets/donk_64.png" alt="Donk"> Donk</div><div class="footer-links"><a href="../">Home</a><a href="./">Features</a></div></div></div></footer>
+<script>const o=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');o.unobserve(x.target)}})},{threshold:.1});document.querySelectorAll('.reveal').forEach(el=>o.observe(el));</script>
+<script src="../assets/feature-nav.js"></script>
+</body>
+</html>

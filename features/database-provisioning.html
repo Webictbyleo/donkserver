@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Database Provisioning — Donk</title>
+    <meta name="description" content="Spin up SQLite, PostgreSQL, MySQL, MongoDB, or Redis on demand. No Docker. Connection string auto-injected.">
+    <link rel="icon" type="image/png" href="../../assets/donk_64.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDCEDXD09F"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LDCEDXD09F');
+</script>
+</head>
+<body>
+<nav class="nav" id="nav"></nav>
+
+<section class="feature-page-hero">
+    <div class="container">
+        <span class="section-label">Databases</span>
+        <h1>Need a database?<br><span class="text-gradient">Click Provision.</span></h1>
+        <p class="subtitle">SQLite, PostgreSQL, MySQL, MongoDB, Redis — provisioned in seconds. No Docker. Connection string auto-injected into your server.</p>
+    </div>
+</section>
+
+<section class="feature-content">
+    <div class="container">
+        <div class="feature-text">
+            <p>Installing PostgreSQL on Windows used to mean downloading an installer, running through a wizard, setting a password you'll forget, configuring <code>pg_hba.conf</code>, and hoping the service starts on boot. Or pulling a Docker image, writing a <code>docker-compose.yml</code>, mapping volumes, and debugging why the container can't see your network.</p>
+            <p>In Donk, you click Provision. Pick the engine. Name your database. It's running in seconds. The connection string is auto-injected as an environment variable into any server you link it to. Your ORM picks it up from <code>DATABASE_URL</code> and you're writing queries.</p>
+
+            <ul class="feature-bullets">
+                <li><strong>SQLite</strong> — instant. File created in your project directory.</li>
+                <li><strong>PostgreSQL</strong> — full server, auto-provisioned with user and database</li>
+                <li><strong>MySQL</strong> — same. User, database, connection string — all generated.</li>
+                <li><strong>MongoDB</strong> — document database with auto-generated connection URI</li>
+                <li><strong>Redis (Garnet)</strong> — in-memory store for caching, queues, sessions</li>
+                <li>Connection string auto-injected as <code>DATABASE_URL</code> environment variable</li>
+                <li>Link multiple databases to one server — Postgres for data, Redis for cache</li>
+                <li>No Docker required — native portable binaries managed by Donk</li>
+            </ul>
+
+            <div class="feature-video-placeholder">
+                <div class="video-icon">🎬</div>
+                <p>Video: 30–40 seconds. Provisioning a PostgreSQL database, linking it to a Django server, running a migration.</p>
+            </div>
+        </div>
+        <div class="feature-nav">
+            <a href="subdomain-tenant-routing.html">← Subdomains</a>
+            <a href="database-viewer.html">Database Viewer →</a>
+        </div>
+    </div>
+</section>
+
+<section class="feature-cta-section"><div class="container"><h3>Download Donk</h3><p>Windows 10/11 · ~230 MB · No dependencies</p><a href="../#download" class="btn btn-primary">Download for Windows</a></div></section>
+<footer><div class="container"><div class="footer-inner"><div class="footer-brand"><img src="../assets/donk_64.png" alt="Donk"> Donk</div><div class="footer-links"><a href="../">Home</a><a href="./">Features</a></div></div></div></footer>
+<script>const o=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');o.unobserve(x.target)}})},{threshold:.1});document.querySelectorAll('.reveal').forEach(el=>o.observe(el));</script>
+<script src="../assets/feature-nav.js"></script>
+</body>
+</html>

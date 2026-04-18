@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WSL Integration — Donk</title>
+    <meta name="description" content="Run and monitor Linux servers from any WSL distro. Same dashboard, same controls. Seamless Windows + Linux development.">
+    <link rel="icon" type="image/png" href="../../assets/donk_64.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDCEDXD09F"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LDCEDXD09F');
+</script>
+</head>
+<body>
+<nav class="nav" id="nav"></nav>
+
+<section class="feature-page-hero">
+    <div class="container">
+        <span class="section-label">WSL</span>
+        <h1>Linux servers.<br><span class="text-gradient">Windows dashboard.</span></h1>
+        <p class="subtitle">Run and monitor servers inside any WSL distro — Ubuntu, Debian, Arch — from the Donk GUI on Windows. Same controls, same debug console.</p>
+    </div>
+</section>
+
+<section class="feature-content">
+    <div class="container">
+        <div class="feature-text">
+            <p>Some projects need Linux. Your production server runs Ubuntu. Your deploy scripts assume bash. Your team uses Linux-native tools. On Windows, the answer is WSL — but managing servers inside WSL means opening a separate terminal, remembering the right distro, navigating the Linux filesystem, and losing all the GUI conveniences.</p>
+            <p>Donk detects installed WSL distributions and lets you run servers inside any of them. The server appears in the same dashboard as your Windows servers — same start/stop controls, same debug console, same resource monitoring. You configure it once and it works.</p>
+
+            <ul class="feature-bullets">
+                <li>Auto-detects installed WSL distributions — Ubuntu, Debian, Arch, etc.</li>
+                <li>Run any server inside WSL from the Donk GUI</li>
+                <li>Same dashboard, same controls as native Windows servers</li>
+                <li>Linux filesystem paths in <code>donk.toml</code> — <code>/home/user/project</code></li>
+                <li>Debug console shows WSL output in real time</li>
+                <li>Environment variables and secrets injected into the WSL process</li>
+                <li>Mixed setups — some servers on Windows, some on WSL, all in one view</li>
+            </ul>
+
+            <div class="feature-video-placeholder">
+                <div class="video-icon">🎬</div>
+                <p>Video: 25–35 seconds. Adding a server on WSL Ubuntu, starting it, seeing output in the Donk debug console.</p>
+            </div>
+        </div>
+        <div class="feature-nav">
+            <a href="docker-export.html">← Docker</a>
+            <a href="vscode-extension.html">VS Code →</a>
+        </div>
+    </div>
+</section>
+
+<section class="feature-cta-section"><div class="container"><h3>Download Donk</h3><p>Windows 10/11 · ~230 MB · No dependencies</p><a href="../#download" class="btn btn-primary">Download for Windows</a></div></section>
+<footer><div class="container"><div class="footer-inner"><div class="footer-brand"><img src="../assets/donk_64.png" alt="Donk"> Donk</div><div class="footer-links"><a href="../">Home</a><a href="./">Features</a></div></div></div></footer>
+<script>const o=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');o.unobserve(x.target)}})},{threshold:.1});document.querySelectorAll('.reveal').forEach(el=>o.observe(el));</script>
+<script src="../assets/feature-nav.js"></script>
+</body>
+</html>

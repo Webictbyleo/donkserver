@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Git Branch Watcher — Donk</title>
+    <meta name="description" content="Switch your git branch and Donk automatically switches the environment profile to match. No manual env changes.">
+    <link rel="icon" type="image/png" href="../../assets/donk_64.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDCEDXD09F"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LDCEDXD09F');
+</script>
+</head>
+<body>
+<nav class="nav" id="nav"></nav>
+
+<section class="feature-page-hero">
+    <div class="container">
+        <span class="section-label">Git Watcher</span>
+        <h1>Switch branch.<br><span class="text-gradient">Environment follows.</span></h1>
+        <p class="subtitle">Donk watches your git branch. Switch to <code>feature/payments</code> and the environment profile switches with it. No manual changes.</p>
+    </div>
+</section>
+
+<section class="feature-content">
+    <div class="container">
+        <div class="feature-text">
+            <p>You're on the <code>main</code> branch with the dev profile active. You switch to <code>feature/payments</code> which needs different environment variables — a Stripe test key, a different database, a webhook URL. Normally you'd switch the env file manually, maybe forget, and spend ten minutes debugging why payments aren't working before realizing you're still on the dev config.</p>
+            <p>Donk's Git Branch Watcher monitors the active branch in your project's git repository. Map branches to environment profiles — <code>main</code> → dev, <code>staging</code> → staging, <code>feature/*</code> → feature-dev. When you switch branches, Donk switches the profile and hot-reloads the server in about a second.</p>
+
+            <ul class="feature-bullets">
+                <li>Map git branches to environment profiles — exact match or glob patterns</li>
+                <li>Auto-switch when you <code>git checkout</code> or switch branches in VS Code</li>
+                <li>Hot-reload in ~1 second — no full restart</li>
+                <li>Glob patterns — <code>feature/*</code> matches all feature branches</li>
+                <li>Optional: auto-run commands on branch switch (e.g., <code>npm install</code>, migrations)</li>
+                <li>Configurable in <code>donk.toml</code> — commit branch-profile mappings to the repo</li>
+            </ul>
+
+            <div class="feature-video-placeholder">
+                <div class="video-icon">🎬</div>
+                <p>Video: 25–35 seconds. Git checkout to a different branch → profile auto-switches → server restarts with different env.</p>
+            </div>
+        </div>
+        <div class="feature-nav">
+            <a href="environment-profiles.html">← Profiles</a>
+            <a href="background-workers.html">Workers →</a>
+        </div>
+    </div>
+</section>
+
+<section class="feature-cta-section"><div class="container"><h3>Download Donk</h3><p>Windows 10/11 · ~230 MB · No dependencies</p><a href="../#download" class="btn btn-primary">Download for Windows</a></div></section>
+<footer><div class="container"><div class="footer-inner"><div class="footer-brand"><img src="../assets/donk_64.png" alt="Donk"> Donk</div><div class="footer-links"><a href="../">Home</a><a href="./">Features</a></div></div></div></footer>
+<script>const o=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');o.unobserve(x.target)}})},{threshold:.1});document.querySelectorAll('.reveal').forEach(el=>o.observe(el));</script>
+<script src="../assets/feature-nav.js"></script>
+</body>
+</html>

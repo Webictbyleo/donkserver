@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subdomain & Tenant Routing — Donk</title>
+    <meta name="description" content="Wildcard subdomains for multi-tenant SaaS. Explicit mode for microservice routing. Wildcard SSL included.">
+    <link rel="icon" type="image/png" href="../../assets/donk_64.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDCEDXD09F"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LDCEDXD09F');
+</script>d
+</head>
+<body>
+<nav class="nav" id="nav"></nav>
+
+<section class="feature-page-hero">
+    <div class="container">
+        <span class="section-label">Routing</span>
+        <h1>Subdomains that work.<br><span class="text-gradient">Locally.</span></h1>
+        <p class="subtitle">Wildcard mode for multi-tenant SaaS. Explicit mode for microservice routing. Wildcard SSL certificates included.</p>
+    </div>
+</section>
+
+<section class="feature-content">
+    <div class="container">
+        <div class="feature-text">
+            <p>You're building a SaaS platform where each customer gets their own subdomain — <code>acme.myapp.com</code>, <code>beta-corp.myapp.com</code>. In production, it works because DNS and your reverse proxy handle the routing. In development, you can't even resolve <code>acme.myapp.test</code> without editing the hosts file every time you add a tenant.</p>
+            <p>Donk has two subdomain modes. <strong>Wildcard mode</strong> resolves <code>*.myapp.test</code> to your server — any subdomain, automatically. Your app reads the <code>Host</code> header and routes to the right tenant. <strong>Explicit mode</strong> maps specific subdomains to specific servers — <code>api.myapp.test</code> to the backend, <code>admin.myapp.test</code> to the admin panel, <code>ws.myapp.test</code> to the WebSocket gateway.</p>
+
+            <ul class="feature-bullets">
+                <li><strong>Wildcard mode</strong> — <code>*.myapp.test</code> resolves automatically. Any subdomain works.</li>
+                <li><strong>Explicit mode</strong> — map specific subdomains to specific local servers</li>
+                <li>Wildcard SSL certificates — HTTPS for every subdomain, no additional config</li>
+                <li>Multi-device — subdomains resolve from phones, tablets, other machines on LAN</li>
+                <li>Composable — combine wildcard mode on one server with explicit mode on another</li>
+            </ul>
+
+            <div class="feature-video-placeholder">
+                <div class="video-icon">🎬</div>
+                <p>Video: 30–40 seconds. Enabling wildcard mode, opening two different tenant subdomains, seeing different tenant data.</p>
+            </div>
+        </div>
+        <div class="feature-nav">
+            <a href="dns-server.html">← DNS Server</a>
+            <a href="database-provisioning.html">Databases →</a>
+        </div>
+    </div>
+</section>
+
+<section class="feature-cta-section"><div class="container"><h3>Download Donk</h3><p>Windows 10/11 · ~230 MB · No dependencies</p><a href="../#download" class="btn btn-primary">Download for Windows</a></div></section>
+<footer><div class="container"><div class="footer-inner"><div class="footer-brand"><img src="../assets/donk_64.png" alt="Donk"> Donk</div><div class="footer-links"><a href="../">Home</a><a href="./">Features</a></div></div></div></footer>
+<script>const o=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');o.unobserve(x.target)}})},{threshold:.1});document.querySelectorAll('.reveal').forEach(el=>o.observe(el));</script>
+<script src="../assets/feature-nav.js"></script>
+</body>
+</html>

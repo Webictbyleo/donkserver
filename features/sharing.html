@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Share Instantly — Donk</title>
+    <meta name="description" content="5 tunnel providers. Public URL + QR code in one click. Cloudflare, ngrok, Tailscale, WireGuard, SSH reverse tunnels.">
+    <link rel="icon" type="image/png" href="../../assets/donk_64.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDCEDXD09F"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LDCEDXD09F');
+</script>
+</head>
+<body>
+<nav class="nav" id="nav"></nav>
+
+<section class="feature-page-hero">
+    <div class="container">
+        <span class="section-label">Sharing</span>
+        <h1>Your localhost.<br><span class="text-gradient">Their browser.</span></h1>
+        <p class="subtitle">One click gives you a public URL and a QR code. Five different tunnel providers — pick the one that fits.</p>
+    </div>
+</section>
+
+<section class="feature-content">
+    <div class="container">
+        <div class="feature-text">
+            <p>It's 3 PM. Your client wants to see the feature before the meeting tomorrow. The feature works perfectly — on your machine. You could deploy a staging branch, wait for the build, hope the environment matches. Or you could share your local server with a URL the client can open in their browser right now.</p>
+            <p>Click the Share button on any running server. Donk opens a tunnel — your server stays on localhost, but it's accessible from a public URL. Donk generates a QR code automatically — point your phone at the screen and test the mobile layout on a real device in three seconds.</p>
+
+            <ul class="feature-bullets">
+                <li><strong>Cloudflare Quick Tunnels</strong> — free, no signup, instant. The default.</li>
+                <li><strong>ngrok</strong> — custom domains, IP restrictions, and regional endpoints when you need control</li>
+                <li><strong>Tailscale</strong> — private mesh VPN sharing for teams. Not world-accessible.</li>
+                <li><strong>WireGuard</strong> — peer-to-peer encrypted tunnel for custom infrastructure</li>
+                <li><strong>SSH reverse tunnels</strong> — use your own VPS as the relay. Zero vendor lock-in.</li>
+                <li>Auto-generated QR code for every tunnel link — mobile testing in seconds</li>
+                <li>LAN sharing — one toggle makes your server accessible to every device on your network</li>
+                <li>Tunnels survive server restarts — the link doesn't change when you restart</li>
+            </ul>
+
+            <div class="feature-video-placeholder">
+                <div class="video-icon">🎬</div>
+                <p>Video: 25–35 seconds. Starting a tunnel, copying the URL, opening it on mobile via QR code.</p>
+            </div>
+        </div>
+        <div class="feature-nav">
+            <a href="secrets-vault.html">← Secrets Vault</a>
+            <a href="ssl-custom-domains.html">SSL & Custom Domains →</a>
+        </div>
+    </div>
+</section>
+
+<section class="feature-cta-section"><div class="container"><h3>Download Donk</h3><p>Windows 10/11 · ~230 MB · No dependencies</p><a href="../#download" class="btn btn-primary">Download for Windows</a></div></section>
+<footer><div class="container"><div class="footer-inner"><div class="footer-brand"><img src="../assets/donk_64.png" alt="Donk"> Donk</div><div class="footer-links"><a href="../">Home</a><a href="./">Features</a></div></div></div></footer>
+<script>const o=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');o.unobserve(x.target)}})},{threshold:.1});document.querySelectorAll('.reveal').forEach(el=>o.observe(el));</script>
+<script src="../assets/feature-nav.js"></script>
+</body>
+</html>

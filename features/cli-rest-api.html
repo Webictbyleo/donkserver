@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLI & REST API — Donk</title>
+    <meta name="description" content="Everything in the GUI, available from the command line and a full REST API. Power users, CI/CD, automation, scripting.">
+    <link rel="icon" type="image/png" href="../../assets/donk_64.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDCEDXD09F"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LDCEDXD09F');
+</script>
+</head>
+<body>
+<nav class="nav" id="nav"></nav>
+
+<section class="feature-page-hero">
+    <div class="container">
+        <span class="section-label">CLI & API</span>
+        <h1>Power users,<br><span class="text-gradient">we got you.</span></h1>
+        <p class="subtitle">Everything in the GUI is available from the CLI. Plus a full REST API for automation, CI/CD integration, and scripting.</p>
+    </div>
+</section>
+
+<section class="feature-content">
+    <div class="container">
+        <div class="feature-text">
+            <p>Some developers prefer keyboards over mice. Some need to automate Donk as part of a CI/CD pipeline. Some want to build custom tooling on top of it. The CLI and REST API make all of that possible.</p>
+
+            <div class="cli-window reveal" style="margin: 2rem 0 3rem;">
+                <div class="cli-bar">
+                    <div class="cli-dot r"></div><div class="cli-dot y"></div><div class="cli-dot g"></div>
+                    <span>Donk Shell</span>
+                </div>
+                <div class="cli-body">
+                    <div><span class="c-comment"># Add a FastAPI project</span></div>
+                    <div><span class="c-prompt">❯ </span><span class="c-cmd">donk add my-api </span><span class="c-flag">--backend fastapi --web-root</span><span class="c-cmd"> ./api</span></div>
+                    <div><span class="c-out">  ✓ Server "my-api" created</span></div>
+                    <br>
+                    <div><span class="c-comment"># Start it</span></div>
+                    <div><span class="c-prompt">❯ </span><span class="c-cmd">donk start my-api</span></div>
+                    <div><span class="c-out">  ✓ my-api running on http://localhost:8000</span></div>
+                    <br>
+                    <div><span class="c-comment"># Provision a database</span></div>
+                    <div><span class="c-prompt">❯ </span><span class="c-cmd">donk db create </span><span class="c-flag">--engine postgres --name</span><span class="c-cmd"> mydb</span></div>
+                    <div><span class="c-out">  ✓ PostgreSQL "mydb" running on port 5432</span></div>
+                    <br>
+                    <div><span class="c-comment"># Share with the world</span></div>
+                    <div><span class="c-prompt">❯ </span><span class="c-cmd">donk share my-api </span><span class="c-flag">--provider cloudflare</span></div>
+                    <div><span class="c-out">  ✓ Tunnel → https://my-api-abc123.trycloudflare.com</span></div>
+                    <br>
+                    <div><span class="c-comment"># Run Doctor</span></div>
+                    <div><span class="c-prompt">❯ </span><span class="c-cmd">donk doctor my-api</span></div>
+                    <div><span class="c-out">  ✓ 198 routes · 47 packages · 1 error · 4 warnings</span></div>
+                    <br>
+                    <div><span class="c-comment"># Deploy</span></div>
+                    <div><span class="c-prompt">❯ </span><span class="c-cmd">donk deploy my-api </span><span class="c-flag">--target railway</span></div>
+                    <div><span class="c-out">  ✓ Deployed → https://my-api.up.railway.app</span></div>
+                </div>
+            </div>
+
+            <ul class="feature-bullets">
+                <li><strong>Full CLI</strong> — every GUI action has a CLI equivalent</li>
+                <li><strong>REST API</strong> — HTTP endpoints on <code>localhost:7799</code> for all operations</li>
+                <li>JSON output with <code>--json</code> flag — pipe to <code>jq</code>, use in scripts</li>
+                <li>Auto-completion for bash, zsh, PowerShell, and fish</li>
+                <li>Headless mode — run without the GUI for CI/CD environments</li>
+                <li>WebSocket support for real-time log streaming</li>
+            </ul>
+
+            <div class="feature-video-placeholder">
+                <div class="video-icon">🎬</div>
+                <p>Video: 35–45 seconds. CLI session — adding a server, starting it, provisioning a database, deploying, all from the terminal.</p>
+            </div>
+        </div>
+        <div class="feature-nav">
+            <a href="vscode-extension.html">← VS Code</a>
+            <a href="./">All Features</a>
+        </div>
+    </div>
+</section>
+
+<section class="feature-cta-section"><div class="container"><h3>Download Donk</h3><p>Windows 10/11 · ~230 MB · No dependencies</p><a href="../#download" class="btn btn-primary">Download for Windows</a></div></section>
+<footer><div class="container"><div class="footer-inner"><div class="footer-brand"><img src="../assets/donk_64.png" alt="Donk"> Donk</div><div class="footer-links"><a href="../">Home</a><a href="./">Features</a></div></div></div></footer>
+<script>const o=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');o.unobserve(x.target)}})},{threshold:.1});document.querySelectorAll('.reveal').forEach(el=>o.observe(el));</script>
+<script src="../assets/feature-nav.js"></script>
+</body>
+</html>

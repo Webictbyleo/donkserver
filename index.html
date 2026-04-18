@@ -1,0 +1,1586 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donk — Your Entire Dev Stack. One App. Zero Setup.</title>
+    <meta name="description" content="Donk is a desktop app for Windows. Servers, runtimes, databases, tunnels, DNS, SSL, secrets, API mocking, network inspection, deploy — one window. You just write the code.">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Donk — Your Entire Dev Stack. One App. Zero Setup.">
+    <meta property="og:description" content="Servers, runtimes, databases, tunnels, DNS, SSL, secrets, API mocking, network inspection, deploy — one window. 22 frameworks, 5 bundled runtimes, 75+ mocked APIs.">
+    <meta property="og:url" content="https://donkserver.com/landing/index.html">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://donkserver.com/assets/image-og.jpg">
+    <meta property="og:image:secure_url" content="https://donkserver.com/assets/image-og.jpg">
+    <meta property="og:image:alt" content="Donk app overview image">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Donk — Your Entire Dev Stack. One App. Zero Setup.">
+    <meta name="twitter:description" content="Servers, runtimes, databases, tunnels, DNS, SSL, secrets, API mocking, network inspection, deploy — one window. 22 frameworks, 5 bundled runtimes, 75+ mocked APIs.">
+    <meta name="twitter:image" content="https://donkserver.com/assets/image-og.jpg">
+
+    <link rel="icon" type="image/png" href="../assets/donk_64.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <link rel="stylesheet" href="assets/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDCEDXD09F"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LDCEDXD09F');
+</script>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<nav class="nav" id="nav">
+    <div class="nav-inner">
+        <a href="#" class="nav-brand">
+            <img src="assets/donk_64.png" alt="Donk">Donk
+        </a>
+        <div class="nav-links" id="navLinks">
+            <a href="#features">Features</a>
+            <a href="#frameworks">Frameworks</a>
+            <a href="#how">How It Works</a>
+            <a href="#mocking">API Mocking & Interception</a>
+            <a href="#gateway">Gateway</a>
+            <a href="#doctor">Doctor</a>
+            <a href="#rsync-deploy">SSH Deploy</a>
+            <a href="#vscode">VS Code</a>
+            <a href="#pricing">Plans</a>
+        </div>
+        <div class="nav-cta">
+            <a href="#waitlist" class="btn btn-primary btn-sm">
+                Join Waitlist
+            </a>
+        </div>
+        <button class="mobile-toggle" onclick="document.getElementById('navLinks').classList.toggle('show')" aria-label="Toggle menu">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+    </div>
+</nav>
+
+<!-- ===== HERO w/ THREE.JS 3D PARTICLE NETWORK ===== -->
+<section class="hero" id="hero">
+    <canvas id="hero-canvas"></canvas>
+    <div class="hero-overlay"></div>
+
+
+    <div class="hero-content">
+        <div class="hero-pill"><span class="pulse"></span> Now available for Windows</div>
+        <h1>
+            Your entire dev stack.<br>
+            <span class="hero-rotate-wrap">
+                <span class="hero-rotate" id="heroRotate">
+                    <span class="hero-rotate-line active">Zero setup.</span>
+                    <span class="hero-rotate-line">No Docker.</span>
+                    <span class="hero-rotate-line">$0 API costs.</span>
+                    <span class="hero-rotate-line">Ship securely.</span>
+                    <span class="hero-rotate-line">One-click deploy.</span>
+                </span>
+            </span>
+        </h1>
+        <p class="subtitle">
+            Servers, runtimes, databases, tunnels, DNS, SSL, secrets, API mocking, network inspection, deploy &mdash; one window. You just write the code.
+        </p>
+
+        <!-- Inline live terminal demo -->
+        <div class="hero-terminal" id="heroTerminal">
+            <div class="hero-term-bar">
+                <span class="hero-term-dot red"></span>
+                <span class="hero-term-dot yellow"></span>
+                <span class="hero-term-dot green"></span>
+                <span class="hero-term-title">Terminal</span>
+            </div>
+            <div class="hero-term-body">
+                <div class="hero-term-line">
+                    <span class="hero-term-prompt">$</span>
+                    <span class="hero-term-cmd" id="heroTermCmd"></span><span class="hero-term-cursor" id="heroTermCursor">▎</span>
+                </div>
+                <div class="hero-term-output" id="heroTermOutput"></div>
+            </div>
+        </div>
+
+        <!-- Pricing callout with animated gradient border -->
+        <div class="hero-pricing-callout">
+            <div class="hero-pricing-badge hero-glow-border">
+                <span class="hero-pricing-tag">One-time purchase. 1 year of updates.</span>
+                <span class="hero-pricing-detail">No subscription. Pay once, own it forever. Dev & Enterprise plans coming soon.</span>
+            </div>
+        </div>
+
+        <div class="hero-actions">
+            <form class="waitlist-form" id="heroWaitlistForm" onsubmit="return handleWaitlist(event, this)">
+                <div class="waitlist-input-wrap">
+                    <input type="email" name="email" placeholder="you@example.com" required class="waitlist-input" autocomplete="email">
+                    <button type="submit" class="btn btn-primary btn-waitlist">Join the Waitlist</button>
+                </div>
+                <div class="waitlist-msg" id="heroWaitlistMsg"></div>
+            </form>
+            <a href="#features" class="btn btn-ghost">See what it does →</a>
+        </div>
+
+        <!-- Trust signals -->
+        <div class="hero-trust">
+            <div class="hero-trust-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                One-time payment
+            </div>
+            <div class="hero-trust-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><polyline points="20 6 9 17 4 12"/></svg>
+                1 year of updates
+            </div>
+            <div class="hero-trust-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                Dev & Enterprise plans
+            </div>
+            <div class="hero-trust-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><polyline points="20 6 9 17 4 12"/></svg>
+                Launching soon
+            </div>
+        </div>
+
+        <div class="hero-meta">
+            <span><span class="dot"></span> Windows 10/11</span>
+            <span><span class="dot"></span> ~230 MB</span>
+            <span><span class="dot"></span> No dependencies</span>
+            <span><span class="dot"></span> No config fights</span>
+        </div>
+        <div class="hero-gui-wrap reveal">
+            <div class="hero-gui" id="heroGUI">
+
+                <!-- Windows-style titlebar -->
+                <div class="gui-titlebar">
+                    <span class="gui-title-icon">🔶</span>
+                    <span class="gui-title-text">Donk - Dev Server Manager</span>
+                    <div class="gui-win-btns">
+                        <div class="gui-win-btn">−</div>
+                        <div class="gui-win-btn">□</div>
+                        <div class="gui-win-btn close">×</div>
+                    </div>
+                </div>
+
+                <!-- Toolbar -->
+                <div class="gui-toolbar">
+                    <button class="gui-add-btn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="12" height="12"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                        Add Server
+                    </button>
+                    <div class="gui-divider"></div>
+                    <div class="gui-search">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                        Search commands… &nbsp; <span class="gui-search-hint">Ctrl+K</span>
+                    </div>
+                    <div class="gui-nav-btns">
+                        <div class="gui-nav-btn">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+                            Runtimes
+                        </div>
+                        <div class="gui-nav-btn">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+                            Databases
+                        </div>
+                        <div class="gui-nav-btn">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                            Email
+                        </div>
+                        <div class="gui-nav-btn">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 010 14.14M4.93 4.93a10 10 0 000 14.14"/></svg>
+                            Workers
+                        </div>
+                    </div>
+                    <div class="gui-icon-btns">
+                        <div class="gui-icon-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+                        <div class="gui-icon-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg></div>
+                        <div class="gui-icon-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg></div>
+                    </div>
+                </div>
+
+                <!-- Server Table -->
+                <div class="gui-table-wrap">
+                    <table class="gui-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th><th>Backend</th><th>Status</th>
+                                <th>CPU</th><th>Memory</th><th>GPU</th>
+                                <th>Address</th><th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="serverTableBody">
+                            <tr data-server="flask">
+                                <td><div class="srv-name-cell"><div class="srv-fw-icon fw-icon-flask">🪴</div><span class="srv-name-text">dbg-flask</span></div></td>
+                                <td>Flask</td>
+                                <td><span class="srv-status running"><span class="s-dot"></span>Running<div class="srv-bars"><span></span><span></span><span></span></div></span></td>
+                                <td><span class="srv-stat active" data-stat="cpu">0%</span></td>
+                                <td><span class="srv-stat active" data-stat="mem">80.9 MB</span></td>
+                                <td><span class="srv-stat">0%</span></td>
+                                <td><span class="srv-url">http://127.0.0.1:8001</span></td>
+                                <td><div class="srv-actions">
+                                    <button class="srv-btn stop" onclick="donkStop('flask')">
+                                        <svg viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="6" width="12" height="12" rx="1"/></svg>Stop
+                                    </button>
+                                    <button class="srv-btn edit">✎ Edit</button>
+                                </div></td>
+                            </tr>
+                            <tr data-server="node">
+                                <td><div class="srv-name-cell"><div class="srv-fw-icon fw-icon-node">🟢</div><span class="srv-name-text">dbg-node</span></div></td>
+                                <td>Node.js</td>
+                                <td><span class="srv-status stopped"><span class="s-dot"></span>Stopped</span></td>
+                                <td><span class="srv-stat" data-stat="cpu">0%</span></td>
+                                <td><span class="srv-stat" data-stat="mem">—</span></td>
+                                <td><span class="srv-stat">0%</span></td>
+                                <td><span class="srv-url">http://127.0.0.1:8004</span></td>
+                                <td><div class="srv-actions">
+                                    <button class="srv-btn start" onclick="donkStart('node')">
+                                        <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>Start
+                                    </button>
+                                    <button class="srv-btn edit">✎ Edit</button>
+                                </div></td>
+                            </tr>
+                            <tr data-server="php">
+                                <td><div class="srv-name-cell"><div class="srv-fw-icon fw-icon-php">🐘</div><span class="srv-name-text">dbg-php</span></div></td>
+                                <td>PHP Built-in…</td>
+                                <td><span class="srv-status stopped"><span class="s-dot"></span>Stopped</span></td>
+                                <td><span class="srv-stat" data-stat="cpu">0%</span></td>
+                                <td><span class="srv-stat" data-stat="mem">—</span></td>
+                                <td><span class="srv-stat">0%</span></td>
+                                <td><span class="srv-url">http://127.0.0.1:8003</span></td>
+                                <td><div class="srv-actions">
+                                    <button class="srv-btn start" onclick="donkStart('php')">
+                                        <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>Start
+                                    </button>
+                                    <button class="srv-btn edit">✎ Edit</button>
+                                </div></td>
+                            </tr>
+                            <tr data-server="donk">
+                                <td><div class="srv-name-cell"><div class="srv-fw-icon fw-icon-static">🔶</div><span class="srv-name-text">donk</span></div></td>
+                                <td>Static File Ser…</td>
+                                <td><span class="srv-status stopped"><span class="s-dot"></span>Stopped</span></td>
+                                <td><span class="srv-stat" data-stat="cpu">0%</span></td>
+                                <td><span class="srv-stat" data-stat="mem">—</span></td>
+                                <td><span class="srv-stat">0%</span></td>
+                                <td><span class="srv-url">https://getdonk.local</span></td>
+                                <td><div class="srv-actions">
+                                    <button class="srv-btn start" onclick="donkStart('donk')">
+                                        <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>Start
+                                    </button>
+                                    <button class="srv-btn edit">✎ Edit</button>
+                                </div></td>
+                            </tr>
+                            <tr data-server="go">
+                                <td><div class="srv-name-cell"><div class="srv-fw-icon fw-icon-go">🦫</div><span class="srv-name-text">testgo</span></div></td>
+                                <td>Go</td>
+                                <td><span class="srv-status stopped"><span class="s-dot"></span>Stopped</span></td>
+                                <td><span class="srv-stat" data-stat="cpu">0%</span></td>
+                                <td><span class="srv-stat" data-stat="mem">—</span></td>
+                                <td><span class="srv-stat">0%</span></td>
+                                <td><span class="srv-url">http://127.0.0.1:8005</span></td>
+                                <td><div class="srv-actions">
+                                    <button class="srv-btn start" onclick="donkStart('go')">
+                                        <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>Start
+                                    </button>
+                                    <button class="srv-btn edit">✎ Edit</button>
+                                </div></td>
+                            </tr>
+                            <tr data-server="laravel">
+                                <td><div class="srv-name-cell"><div class="srv-fw-icon fw-icon-laravel">🎵</div><span class="srv-name-text">testlaravel</span></div></td>
+                                <td>Laravel (Artis…)</td>
+                                <td><span class="srv-status stopped"><span class="s-dot"></span>Stopped</span></td>
+                                <td><span class="srv-stat" data-stat="cpu">0%</span></td>
+                                <td><span class="srv-stat" data-stat="mem">—</span></td>
+                                <td><span class="srv-stat">0%</span></td>
+                                <td><span class="srv-url">http://127.0.0.1:8008</span></td>
+                                <td><div class="srv-actions">
+                                    <button class="srv-btn start" onclick="donkStart('laravel')">
+                                        <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>Start
+                                    </button>
+                                    <button class="srv-btn edit">✎ Edit</button>
+                                </div></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Debug Console -->
+                <div class="gui-console">
+                    <div class="gui-console-tabs">
+                        <div class="gui-ctab" onclick="switchConsoleTab(this,'reqlog')">Request Log</div>
+                        <div class="gui-ctab active" onclick="switchConsoleTab(this,'debug')">Debug Console</div>
+                        <div class="gui-ctab" onclick="switchConsoleTab(this,'worker')">Worker Log</div>
+                    </div>
+                    <div class="gui-console-toolbar">
+                        <span class="gui-con-label">Server:</span>
+                        <select class="gui-con-select" id="consoleServerSelect" title="Select server" aria-label="Server console">
+                            <option>dbg-flask</option>
+                            <option>dbg-node</option>
+                            <option>dbg-php</option>
+                        </select>
+                        <div class="gui-con-check"><span class="ck on">✓</span> Error</div>
+                        <div class="gui-con-check"><span class="ck on">✓</span> Warning</div>
+                        <div class="gui-con-check"><span class="ck on">✓</span> Info</div>
+                        <div class="gui-con-check"><span class="ck on">✓</span> Debug</div>
+                        <div class="gui-con-check"><span class="ck on">✓</span> Output</div>
+                        <button class="gui-copy-btn">Copy</button>
+                        <button class="gui-clear-btn" onclick="document.getElementById('consoleOutput').innerHTML=''">Clear</button>
+                    </div>
+                    <div class="gui-con-output" id="consoleOutput">
+                        <div class="clog out">INFO:debug_test:logger.info: Info level message</div>
+                        <div class="clog warn">WARNING:debug_test:logger.warning: Warning level message</div>
+                        <div class="clog error">ERROR:debug_test:logger.error: Error level message</div>
+                        <div class="clog out">=== PYTHON/FLASK DEBUG OUTPUT TEST ===</div>
+                    </div>
+                </div>
+
+                <!-- Status bar -->
+                <div class="gui-statusbar" id="guiStatusBar">
+                    <span class="s-dot"></span>
+                    <span id="guiStatusText">6 servers configured • 1 running</span>
+                </div>
+
+            </div>
+            <div class="gui-glow"></div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== MARQUEE ===== -->
+<section class="marquee-section">
+    <div class="marquee-track" id="marquee">
+        <div class="marquee-item"><img class="marquee-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" alt="Python"> Python</div>
+        <div class="marquee-item"><img class="marquee-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg" alt="Node.js"> Node.js</div>
+        <div class="marquee-item"><img class="marquee-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg" alt="PHP"> PHP</div>
+        <div class="marquee-item"><img class="marquee-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/go/go-original.svg" alt="Go"> Go</div>
+        <div class="marquee-item"><img class="marquee-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/rust/rust-original.svg" alt="Rust"> Rust</div>
+        <div class="marquee-item"><img class="marquee-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bun/bun-original.svg" alt="Bun"> Bun</div>
+        <div class="marquee-item"><img class="marquee-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/django/django-plain.svg" alt="Django"> Django</div>
+        <div class="marquee-item"><img class="marquee-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/fastapi/fastapi-plain.svg" alt="FastAPI"> FastAPI</div>
+        <div class="marquee-item"><img class="marquee-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg" alt="Next.js"> Next.js</div>
+        <div class="marquee-item"><img class="marquee-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitejs/vitejs-original.svg" alt="Vite"> Vite</div>
+        <div class="marquee-item"><img class="marquee-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/laravel/laravel-original.svg" alt="Laravel"> Laravel</div>
+        <div class="marquee-item"><img class="marquee-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/symfony/symfony-original.svg" alt="Symfony"> Symfony</div>
+        <div class="marquee-item"><img class="marquee-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg" alt="Express"> Express</div>
+        <div class="marquee-item"><img class="marquee-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/astro/astro-original.svg" alt="Astro"> Astro</div>
+        <div class="marquee-item"><img class="marquee-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/svelte/svelte-original.svg" alt="SvelteKit"> SvelteKit</div>
+        <div class="marquee-item"><img class="marquee-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/streamlit/streamlit-original.svg" alt="Streamlit"> Streamlit</div>
+        <div class="marquee-item"><img class="marquee-logo" src="https://github.com/gradio-app/gradio/raw/main/readme_files/gradio.svg" alt="Gradio"> Gradio</div>
+        <div class="marquee-item"><img class="marquee-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg" alt="VS Code"> VS Code</div>
+        <div class="marquee-item"><img class="marquee-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" alt="Docker"> Docker</div>
+        <div class="marquee-item"><span class="marquee-icon">🔒</span> SSL</div>
+        <div class="marquee-item"><span class="marquee-icon">🌐</span> DNS</div>
+        <!-- duplicated for seamless loop -->
+        <div class="marquee-item"><img class="marquee-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" alt="Python"> Python</div>
+        <div class="marquee-item"><img class="marquee-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg" alt="Node.js"> Node.js</div>
+        <div class="marquee-item"><img class="marquee-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg" alt="PHP"> PHP</div>
+        <div class="marquee-item"><img class="marquee-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/go/go-original.svg" alt="Go"> Go</div>
+        <div class="marquee-item"><img class="marquee-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/rust/rust-original.svg" alt="Rust"> Rust</div>
+        <div class="marquee-item"><img class="marquee-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bun/bun-original.svg" alt="Bun"> Bun</div>
+        <div class="marquee-item"><img class="marquee-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/django/django-plain.svg" alt="Django"> Django</div>
+        <div class="marquee-item"><img class="marquee-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/fastapi/fastapi-plain.svg" alt="FastAPI"> FastAPI</div>
+        <div class="marquee-item"><img class="marquee-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg" alt="Next.js"> Next.js</div>
+        <div class="marquee-item"><img class="marquee-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitejs/vitejs-original.svg" alt="Vite"> Vite</div>
+        <div class="marquee-item"><img class="marquee-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/laravel/laravel-original.svg" alt="Laravel"> Laravel</div>
+        <div class="marquee-item"><img class="marquee-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/symfony/symfony-original.svg" alt="Symfony"> Symfony</div>
+        <div class="marquee-item"><img class="marquee-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg" alt="Express"> Express</div>
+        <div class="marquee-item"><img class="marquee-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/astro/astro-original.svg" alt="Astro"> Astro</div>
+        <div class="marquee-item"><img class="marquee-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/svelte/svelte-original.svg" alt="SvelteKit"> SvelteKit</div>
+        <div class="marquee-item"><img class="marquee-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/streamlit/streamlit-original.svg" alt="Streamlit"> Streamlit</div>
+        <div class="marquee-item"><img class="marquee-logo" src="https://github.com/gradio-app/gradio/raw/main/readme_files/gradio.svg" alt="Gradio"> Gradio</div>
+        <div class="marquee-item"><img class="marquee-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg" alt="VS Code"> VS Code</div>
+        <div class="marquee-item"><img class="marquee-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" alt="Docker"> Docker</div>
+        <div class="marquee-item"><span class="marquee-icon">🔒</span> SSL</div>
+        <div class="marquee-item"><span class="marquee-icon">🌐</span> DNS</div>
+    </div>
+</section>
+
+<!-- ===== STATS ===== -->
+<section class="section">
+    <div class="container">
+        <div class="stats-row reveal">
+            <div class="stat-block"><div class="stat-num">22</div><div class="stat-label">Frameworks</div></div>
+            <div class="stat-block"><div class="stat-num">5</div><div class="stat-label">Runtimes</div></div>
+            <div class="stat-block"><div class="stat-num">5</div><div class="stat-label">Databases</div></div>
+            <div class="stat-block"><div class="stat-num">75+</div><div class="stat-label">Mocked APIs</div></div>
+            <div class="stat-block"><div class="stat-num">5</div><div class="stat-label">Tunnel Providers</div></div>
+        </div>
+    </div>
+</section>
+
+<hr class="gradient-divider">
+
+<!-- ===== BEFORE / AFTER ===== -->
+<section class="compare-section">
+    <div class="container">
+        <div class="section-header reveal">
+            <span class="section-label">The Dev Tax</span>
+            <h2 class="section-title">You know the drill.</h2>
+            <p class="section-desc">You didn't start coding to babysit servers. But somewhere between <code>python not found</code> and port 3000 already in use, you lost another hour. <strong>Donk cancels the subscription.</strong></p>
+        </div>
+        <div class="compare-grid reveal">
+            <div class="compare-col">
+                <h3><span class="text-danger">&#10005;</span> Without Donk</h3>
+                <div class="compare-items">
+                    <div class="compare-item bad"><span class="icon">😤</span> <code>python not found</code> — despite it being installed three times on this machine</div>
+                    <div class="compare-item bad"><span class="icon">💥</span> Port 3000 already in use — by what? <code>netstat</code>, copy PID, <code>taskkill</code>. Every. Single. Day.</div>
+                    <div class="compare-item bad"><span class="icon">🪟</span> Six terminals open. Which one is the API? Which one crashed silently?</div>
+                    <div class="compare-item bad"><span class="icon">🐳</span> Docker Compose seemed like the solution. Now you have a new problem and it's called Docker Compose.</div>
+                    <div class="compare-item bad"><span class="icon">💸</span> $4 burned testing an OpenAI integration that wasn't even working yet</div>
+                    <div class="compare-item bad"><span class="icon">🤯</span> Client wants to see the feature. It's running on localhost. You share your screen like it's 2012.</div>
+                    <div class="compare-item bad"><span class="icon">🔑</span> Shipped a hardcoded API key once. Never again. But the <code>.env</code> your junior left has three of them.</div>
+                    <div class="compare-item bad"><span class="icon">⚠️</span> Admin panel at <code>/admin</code>. No auth because "we'll add that before launch." It launched.</div>
+                    <div class="compare-item bad"><span class="icon">🕳️</span> API call fails. Was it the request? Response? A header? No idea.</div>
+                </div>
+            </div>
+            <div class="compare-col">
+                <h3><span class="text-success">&#10003;</span> With Donk</h3>
+                <div class="compare-items">
+                    <div class="compare-item good"><span class="icon">✅</span> Python, Node, PHP, Go, Bun — bundled. No installs, no PATH war, no conflicts.</div>
+                    <div class="compare-item good"><span class="icon">✅</span> Every server in one window. Real-time CPU, memory, one-click control. System tray when idle.</div>
+                    <div class="compare-item good"><span class="icon">✅</span> Click Provision. Pick your engine. Database starts. Connection string auto-injected. No Docker.</div>
+                    <div class="compare-item good"><span class="icon">✅</span> 75+ API providers mocked — backend and browser intercepted. $0.00 spent. Always.</div>
+                    <div class="compare-item good"><span class="icon">✅</span> Public URL + QR code. One click. Five tunnel providers. Link doesn't change on restart.</div>
+                    <div class="compare-item good"><span class="icon">✅</span> AES-encrypted vault. Auto-injected on start. Auto-redacted from logs. Never in your code.</div>
+                    <div class="compare-item good"><span class="icon">✅</span> Donk Doctor — dependencies, secrets, SAST, live endpoint probing. One click before you ship.</div>
+                    <div class="compare-item good"><span class="icon">✅</span> Full HTTP/HTTPS gateway. Pause requests mid-flight. Modify. Resume. Session replay &amp; HAR export.</div>
+                    <div class="compare-item good"><span class="icon">✅</span> Pick a framework. Point at your folder. Click Start. Done.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<hr class="gradient-divider">
+
+<!-- ===== BENTO FEATURE GRID ===== -->
+<section class="section" id="features">
+    <div class="container">
+        <div class="section-header reveal">
+            <span class="section-label">Features</span>
+            <h2 class="section-title">Everything you need to <span class="text-gradient">just build</span></h2>
+            <p class="section-desc">No more cobbling together 10 different tools. Donk gives you the complete local dev toolkit. <a href="features/" class="text-link">See all features →</a></p>
+        </div>
+        <div class="bento-grid">
+            <div class="bento-card span-2 reveal">
+                <div class="bento-icon">🖥️</div>
+                <h3>One Dashboard. Every Server.</h3>
+                <p>Start, stop, restart all your dev servers from a single window. Real-time CPU, memory, GPU monitoring per server. Green/amber/red status dots. System tray integration — runs quietly in the background.</p>
+                <div class="tag-row"><span class="mini-tag">Real-time stats</span><span class="mini-tag">System tray</span><span class="mini-tag">One-click control</span></div>
+                <a href="features/dashboard.html" class="bento-link">See all 22 frameworks →</a>
+            </div>
+            <div class="bento-card reveal reveal-delay-1">
+                <div class="bento-icon">🔒</div>
+                <h3>Secrets Vault</h3>
+                <p>AES-encrypted local vault. Auto-injected as env vars. Auto-redacted from logs. No more plaintext .env files.</p>
+                <a href="features/secrets-vault.html" class="bento-link">Details →</a>
+            </div>
+            <div class="bento-card reveal reveal-delay-1">
+                <div class="bento-icon">🌐</div>
+                <h3>Share Instantly</h3>
+                <p>5 tunnel providers — Cloudflare, ngrok, Tailscale, WireGuard, SSH. Public URL + QR code in one click.</p>
+                <a href="features/sharing.html" class="bento-link">Details →</a>
+            </div>
+            <div class="bento-card reveal reveal-delay-2">
+                <div class="bento-icon">🔐</div>
+                <h3>HTTPS on Localhost</h3>
+                <p>One checkbox. Custom domains like <code>myapp.test</code>. Certs and reverse proxy handled automatically.</p>
+                <a href="features/ssl-custom-domains.html" class="bento-link">Details →</a>
+            </div>
+            <div class="bento-card reveal reveal-delay-2">
+                <div class="bento-icon">🌐</div>
+                <h3>DNS Server & Domain Routing</h3>
+                <p>A real DNS server — not a hosts file hack. Each server gets its own IP. Create A-records, test custom domain routing and "bring your own domain" flows, resolve domains across all your devices. Network-wide ad blocking included.</p>
+                <a href="features/dns-server.html" class="bento-link">Details →</a>
+            </div>
+            <div class="bento-card span-2 reveal reveal-delay-2">
+                <div class="bento-icon">🗄️</div>
+                <h3>Databases — Provision, Query, Browse, Snapshot</h3>
+                <p>Spin up SQLite, PostgreSQL, MySQL, MongoDB, or Redis on demand. No Docker required. Built-in visual database viewer with table browser, data grid, schema inspector, search, and CSV/JSON export. Run queries directly in the integrated SQL editor — Ctrl+Enter to execute, multi-statement support, instant result grids. Up to 10 snapshots per database — restore instantly like save slots in a video game.</p>
+                <div class="db-preview">
+                    <div class="db-preview-bar">📊 users — 1,247 rows — PostgreSQL</div>
+                    <table>
+                        <tr><th>id</th><th>name</th><th>email</th><th>role</th><th>created_at</th></tr>
+                        <tr><td>1</td><td>Alice Chen</td><td>alice@example.com</td><td>admin</td><td>2026-01-15</td></tr>
+                        <tr><td>2</td><td>Bob Martinez</td><td>bob@dev.io</td><td>editor</td><td>2026-01-22</td></tr>
+                        <tr><td>3</td><td>Carol Singh</td><td>carol@test.dev</td><td>viewer</td><td>2026-02-01</td></tr>
+                    </table>
+                </div>
+                <div class="tag-row"><span class="mini-tag">SQLite</span><span class="mini-tag">PostgreSQL</span><span class="mini-tag">MySQL</span><span class="mini-tag">MongoDB</span><span class="mini-tag">Redis</span><span class="mini-tag">Query editor</span><span class="mini-tag">Visual browser</span><span class="mini-tag">10 snapshots</span></div>
+                <a href="features/database-provisioning.html" class="bento-link">See the database stack →</a>
+            </div>
+            <div class="bento-card reveal reveal-delay-1">
+                <div class="bento-icon">🧪</div>
+                <h3>Test Users & Auth Bypass</h3>
+                <p>Create test users with automatic login bypass. Supports Basic, Bearer, API keys, session cookies.</p>
+                <a href="features/test-users.html" class="bento-link">Details →</a>
+            </div>
+            <div class="bento-card reveal reveal-delay-2">
+                <div class="bento-icon">🔀</div>
+                <h3>Env Profiles & Hot Reload</h3>
+                <p>Named profiles — dev, staging, production. Switch instantly. Hot-reload in ~1 second, tunnels stay alive.</p>
+                <a href="features/environment-profiles.html" class="bento-link">Details →</a>
+            </div>
+            <div class="bento-card reveal reveal-delay-3">
+                <div class="bento-icon">⚡</div>
+                <h3>Background Workers</h3>
+                <p>Run background jobs on a schedule. Cron expressions, concurrency limits, auto-pause when resources are maxed.</p>
+                <a href="features/background-workers.html" class="bento-link">Details →</a>
+            </div>
+            <div class="bento-card reveal reveal-delay-3">
+                <div class="bento-icon">🏢</div>
+                <h3>Subdomain & Tenant Routing</h3>
+                <p>Building multi-tenant SaaS? Wildcard mode resolves <code>*.myapp.test</code> so your app reads the subdomain and routes to the right tenant — the real flow, locally. Explicit mode maps <code>api.*</code>, <code>admin.*</code>, <code>ws.*</code> to separate services. Wildcard SSL included.</p>
+                <a href="features/subdomain-tenant-routing.html" class="bento-link">Details →</a>
+            </div>
+            <div class="bento-card reveal">
+                <div class="bento-icon">📧</div>
+                <h3>Local Email Server</h3>
+                <p>MailPit — SMTP on 1025, web inbox on 8025. Catch every email. Optional relay to SendGrid, SES, etc.</p>
+                <a href="features/email-server.html" class="bento-link">Details →</a>
+            </div>
+            <div class="bento-card reveal reveal-delay-1">
+                <div class="bento-icon">🌍</div>
+                <h3>Web Dashboard</h3>
+                <p>Monitor all servers from any device on your network. Real-time WebSocket updates. Beautiful web UI.</p>
+            </div>
+            <div class="bento-card reveal reveal-delay-2">
+                <div class="bento-icon">🐧</div>
+                <h3>WSL Integration</h3>
+                <p>Run and monitor servers inside any WSL distro. Seamless Windows + Linux dev without leaving Donk.</p>
+                <a href="features/wsl-integration.html" class="bento-link">Details →</a>
+            </div>
+            <div class="bento-card reveal reveal-delay-3">
+                <div class="bento-icon">💎</div>
+                <h3>VS Code Extension</h3>
+                <p>Servers, databases, runtimes, secrets in the sidebar. Copilot tools, <code>donk.toml</code> IntelliSense, Donk Shell.</p>
+                <a href="features/vscode-extension.html" class="bento-link">Details →</a>
+            </div>
+            <div class="bento-card reveal">
+                <div class="bento-icon">🐛</div>
+                <h3>Smart Debug Console</h3>
+                <p>Noise automatically filtered. Access logs in a separate tab. Errors red, warnings amber, info blue. Clean.</p>
+            </div>
+            <div class="bento-card span-2 reveal reveal-delay-1">
+                <div class="bento-icon">🔀</div>
+                <h3>HTTP/HTTPS Gateway — Breakpoints, Replay, Sessions</h3>
+                <p>A built-in forward proxy that sees every request. Route domains, rewrite headers, throttle connections, block URLs, mock responses inline. Set breakpoints to pause requests mid-flight — inspect and modify headers/body before resuming. Record sessions, replay them, export/import HAR files, diff traffic between deployments.</p>
+                <div class="tag-row"><span class="mini-tag">Traffic Log</span><span class="mini-tag">Breakpoints</span><span class="mini-tag">Sessions</span><span class="mini-tag">HAR Import/Export</span><span class="mini-tag">Replay</span><span class="mini-tag">Throttle</span><span class="mini-tag">System Override</span></div>
+                <a href="features/http-gateway.html" class="bento-link">See the gateway in action →</a>
+            </div>
+            <div class="bento-card span-2 reveal">
+                <div class="bento-icon">🩺</div>
+                <h3>Donk Doctor — One-Click Security Scan</h3>
+                <p>Before you ship, let the Doctor look. Full static analysis engine with 20+ SAST patterns at AST-level precision — SQL injection, eval, exec, command injection, insecure deserialization, debug flags, permissive CORS, open redirects. Plus dependency CVEs, hardcoded secrets, route mapping, and live endpoint probing. No config. No security degree required. One click.</p>
+                <div class="tag-row"><span class="mini-tag">Dependency Audit</span><span class="mini-tag">Hardcoded Secrets</span><span class="mini-tag">Static Analysis (SAST)</span><span class="mini-tag">Route Intelligence</span><span class="mini-tag">Live Endpoint Probing</span><span class="mini-tag">Semgrep</span></div>
+                <a href="features/donk-doctor.html" class="bento-link">Watch the Doctor find a real vulnerability →</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<hr class="gradient-divider">
+
+<!-- ===== FEATURE SHOWCASES ===== -->
+<section class="feature-showcase" id="showcase">
+    <div class="container">
+
+        <!-- Terminal & Debug -->
+        <div class="feature-row reveal">
+            <div class="feature-text">
+                <span class="section-label">Terminal</span>
+                <h3>Built-in Terminal.<br>Runtimes On PATH.</h3>
+                <p>Every server gets its own terminal with the right runtime already wired up. No more "python not found." Smart debug console strips framework noise — you see errors, warnings, and your output. Nothing else.</p>
+                <ul class="feature-list">
+                    <li><span class="icon">&#9656;</span> Per-server terminal instances</li>
+                    <li><span class="icon">&#9656;</span> Correct runtime version on PATH automatically</li>
+                    <li><span class="icon">&#9656;</span> HTTP access logs routed to separate Request Log tab</li>
+                    <li><span class="icon">&#9656;</span> Color-coded by severity — errors red, warnings amber</li>
+                </ul>
+            </div>
+            <div class="feature-media">
+                <img src="assets/feature-terminal.png" alt="Built-in terminal with smart debug console">
+            </div>
+        </div>
+
+        <!-- Sharing & Tunnels -->
+        <div class="feature-row reverse reveal">
+            <div class="feature-text">
+                <span class="section-label">Sharing</span>
+                <h3>Share Instantly.<br>With Anyone.</h3>
+                <p>Show your work to a client, teammate, or your phone — in seconds. Five tunnel providers. Public URL + auto-generated QR code. LAN sharing for devices on your network.</p>
+                <ul class="feature-list">
+                    <li><span class="icon">&#9656;</span> Cloudflare — free, no signup, instant</li>
+                    <li><span class="icon">&#9656;</span> ngrok — custom domains and regions</li>
+                    <li><span class="icon">&#9656;</span> Tailscale — private mesh VPN for teams</li>
+                    <li><span class="icon">&#9656;</span> WireGuard + SSH reverse tunnels</li>
+                    <li><span class="icon">&#9656;</span> Automatic QR code for mobile testing</li>
+                </ul>
+            </div>
+            <div class="feature-media">
+                <img src="assets/feature-share.png" alt="Share with tunnels and QR codes">
+            </div>
+        </div>
+
+        <!-- Database Viewer (NEW) -->
+        <div class="feature-row reveal">
+            <div class="feature-text">
+                <span class="section-label">Database Viewer</span>
+                <h3>Browse, Query,<br>and Export Your Data.</h3>
+                <p>No need to install a separate database GUI or remember <code>psql</code> commands. Open any database instance and get a full visual browser: a sidebar listing every table with row counts, a paginated data grid, a toggleable schema panel, and export to CSV or JSON. Run queries directly in the integrated SQL editor — hit Ctrl+Enter and results appear in the same grid.</p>
+                <ul class="feature-list">
+                    <li><span class="icon">&#9656;</span> Table browser with row counts and filter box</li>
+                    <li><span class="icon">&#9656;</span> Paginated data grid — 200 rows per page with sorting</li>
+                    <li><span class="icon">&#9656;</span> Query editor — write SQL, MongoDB, or Redis commands (Ctrl+Enter)</li>
+                    <li><span class="icon">&#9656;</span> Multi-statement support — run multiple queries in sequence</li>
+                    <li><span class="icon">&#9656;</span> Schema inspector — column types, keys, defaults</li>
+                    <li><span class="icon">&#9656;</span> Ctrl+F to search, Ctrl+E to export</li>
+                    <li><span class="icon">&#9656;</span> Works across SQLite, PostgreSQL, MySQL, MongoDB, Redis</li>
+                </ul>
+            </div>
+            <!-- Interactive DB Viewer Mockup -->
+            <div class="dbv-mockup">
+                <div class="dbv-titlebar">
+                    <div class="dbv-dots"><span class="d r"></span><span class="d y"></span><span class="d g"></span></div>
+                    <span class="dbv-title">Database Viewer — myapp_dev (PostgreSQL)</span>
+                    <div class="dbv-actions">
+                        <span class="dbv-btn">⬇ Export</span>
+                        <span class="dbv-btn accent">Schema</span>
+                    </div>
+                </div>
+                <div class="dbv-body">
+                    <div class="dbv-sidebar">
+                        <div class="dbv-filter"><span class="dbv-search-icon">🔍</span> <span class="dbv-filter-placeholder">Filter tables…</span></div>
+                        <div class="dbv-table-item active"><span class="tbl-icon">📋</span> users <span class="row-badge">1,247</span></div>
+                        <div class="dbv-table-item"><span class="tbl-icon">📋</span> orders <span class="row-badge">8,421</span></div>
+                        <div class="dbv-table-item"><span class="tbl-icon">📋</span> products <span class="row-badge">356</span></div>
+                        <div class="dbv-table-item"><span class="tbl-icon">📋</span> sessions <span class="row-badge">94</span></div>
+                        <div class="dbv-table-item"><span class="tbl-icon">📋</span> payments <span class="row-badge">2,103</span></div>
+                        <div class="dbv-table-item"><span class="tbl-icon">📋</span> categories <span class="row-badge">18</span></div>
+                        <div class="dbv-table-item"><span class="tbl-icon">📋</span> reviews <span class="row-badge">4,712</span></div>
+                    </div>
+                    <div class="dbv-main">
+                        <div class="dbv-toolbar">
+                            <span class="dbv-chip">users</span>
+                            <span class="dbv-info">1,247 rows · Page 1 of 7 · 14ms</span>
+                        </div>
+                        <div class="dbv-query-panel" style="background: rgba(108,92,231,0.06); border: 1px solid rgba(108,92,231,0.15); border-radius: 6px; padding: 0.5rem; margin-bottom: 0.5rem;">
+                            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                <code style="flex: 1; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: rgba(255,255,255,0.7); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">SELECT * FROM users WHERE role = 'admin' ORDER BY created_at DESC</code>
+                                <span style="background: var(--accent, #6c5ce7); color: #fff; font-size: 0.62rem; padding: 0.15rem 0.5rem; border-radius: 4px; font-weight: 600; white-space: nowrap;">▶ Run</span>
+                                <span style="font-size: 0.55rem; color: rgba(255,255,255,0.3); white-space: nowrap;">Ctrl+Enter</span>
+                            </div>
+                        </div>
+                        <table class="dbv-grid">
+                            <thead>
+                                <tr><th>id <span class="sort">↑</span></th><th>name</th><th>email</th><th>role</th><th>created_at</th><th>active</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td class="pk">1</td><td>Alice Chen</td><td>alice@example.com</td><td><span class="role-admin">admin</span></td><td>2026-01-15</td><td><span class="bool-true">✓</span></td></tr>
+                                <tr class="highlight"><td class="pk">2</td><td>Bob Martinez</td><td>bob@dev.io</td><td><span class="role-editor">editor</span></td><td>2026-01-22</td><td><span class="bool-true">✓</span></td></tr>
+                                <tr><td class="pk">3</td><td>Carol Singh</td><td>carol@test.dev</td><td><span class="role-viewer">viewer</span></td><td>2026-02-01</td><td><span class="bool-true">✓</span></td></tr>
+                                <tr><td class="pk">4</td><td>David Kim</td><td>david@startup.co</td><td><span class="role-editor">editor</span></td><td>2026-02-03</td><td><span class="bool-false">✗</span></td></tr>
+                                <tr><td class="pk">5</td><td>Eva Rossi</td><td>eva@agency.dev</td><td><span class="role-viewer">viewer</span></td><td>2026-02-10</td><td><span class="bool-true">✓</span></td></tr>
+                            </tbody>
+                        </table>
+                        <div class="dbv-schema-panel">
+                            <div class="schema-header">Schema — users</div>
+                            <div class="schema-cols">
+                                <div class="schema-col"><span class="col-key">PK</span> <span class="col-name">id</span> <span class="col-type">INTEGER</span></div>
+                                <div class="schema-col"><span class="col-name">name</span> <span class="col-type">VARCHAR(255)</span></div>
+                                <div class="schema-col"><span class="col-name">email</span> <span class="col-type">VARCHAR(255)</span> <span class="col-constraint">UNIQUE</span></div>
+                                <div class="schema-col"><span class="col-name">role</span> <span class="col-type">VARCHAR(50)</span> <span class="col-default">= 'viewer'</span></div>
+                                <div class="schema-col"><span class="col-name">created_at</span> <span class="col-type">TIMESTAMP</span></div>
+                                <div class="schema-col"><span class="col-name">active</span> <span class="col-type">BOOLEAN</span> <span class="col-default">= true</span></div>
+                            </div>
+                        </div>
+                        <div class="dbv-statusbar">
+                            <span>PostgreSQL 16.2</span>
+                            <span>localhost:5432/myapp_dev</span>
+                            <span>Loaded in 14ms</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Databases & Snapshots -->
+        <div class="feature-row reverse reveal">
+            <div class="feature-text">
+                <span class="section-label">Snapshots</span>
+                <h3>Save & Restore.<br>Like Save Slots.</h3>
+                <p>Save your database at any point and restore it instantly. Broke something with a migration? Jump back in seconds. Up to 10 snapshots per database across all five engines.</p>
+                <ul class="feature-list">
+                    <li><span class="icon">&#9656;</span> SQLite — instant file copy</li>
+                    <li><span class="icon">&#9656;</span> PostgreSQL — pg_dump / pg_restore</li>
+                    <li><span class="icon">&#9656;</span> MySQL — mysqldump / mysql</li>
+                    <li><span class="icon">&#9656;</span> MongoDB — export and re-import collections</li>
+                    <li><span class="icon">&#9656;</span> Redis (Garnet) — data directory copy</li>
+                    <li><span class="icon">&#9656;</span> Label snapshots — "before migration", "clean seed"</li>
+                </ul>
+                <div class="tag-row tag-row-mt">
+                    <span class="mini-tag">10 slots per DB</span><span class="mini-tag">Instant restore</span><span class="mini-tag">Risk-free experiments</span>
+                </div>
+            </div>
+            <div class="feature-media">
+                <img src="assets/feature-secrets.png" alt="Database snapshots — save and restore instantly">
+            </div>
+        </div>
+
+        <!-- DNS Server & Domain Routing — full-width stacked layout -->
+        </div>
+</section>
+
+<section class="dns-feature-section" id="dns">
+    <div class="container">
+        <div class="dns-feature-header reveal">
+            <span class="section-label">DNS & Routing</span>
+            <h3>Production DNS.<br><span class="text-gradient">On Your Laptop.</span></h3>
+            <p>Building something that depends on domains — multi-tenant SaaS, custom domain routing, subdomain-based microservices? Donk runs a real DNS server on your machine. Every server gets its own IP, subdomains resolve via wildcard DNS with auto SSL, and custom A-records let you test the full domain routing flow locally — exactly the way it works in production.</p>
+        </div>
+
+        <!-- DNS Mockup centered -->
+        <div class="dns-mockup-wrap reveal">
+            <div class="dns-mockup">
+                <div class="dns-mockup-bar">
+                    <div class="mock-bar-dots"><span class="mock-bar-dot r"></span><span class="mock-bar-dot y"></span><span class="mock-bar-dot g"></span></div>
+                    <span class="mock-bar-label">Donk DNS — 3 records · 6 queries</span>
+                    <span></span>
+                </div>
+                <div class="dns-mockup-body">
+                    <div class="dns-mockup-col">
+                        <div class="dns-col-title">DNS RECORDS</div>
+                        <div class="dns-record"><span class="dns-type">A</span> myapp.test → <span class="dns-ip">127.0.0.3</span> <span class="dns-comment"># main app</span></div>
+                        <div class="dns-record"><span class="dns-type">A</span> client-site.test → <span class="dns-ip">127.0.0.3</span> <span class="dns-comment"># custom domain</span></div>
+                        <div class="dns-record"><span class="dns-type">A</span> portfolio.test → <span class="dns-ip dns-ip-alt">127.0.0.5</span> <span class="dns-comment"># white-label</span></div>
+                    </div>
+                    <div class="dns-mockup-divider"></div>
+                    <div class="dns-mockup-col">
+                        <div class="dns-col-title">LIVE QUERY LOG</div>
+                        <div class="dns-record"><span class="dns-status dns-local">LOCAL</span> acme.myapp.test → <span class="dns-ip">127.0.0.3</span></div>
+                        <div class="dns-record"><span class="dns-status dns-local">LOCAL</span> beta-corp.myapp.test → <span class="dns-ip">127.0.0.3</span></div>
+                        <div class="dns-record"><span class="dns-status dns-local">LOCAL</span> client-site.test → <span class="dns-ip">127.0.0.3</span></div>
+                        <div class="dns-record"><span class="dns-status dns-fwd">FWD</span> api.stripe.com → <span class="dns-ip-ext">34.200.5.18</span></div>
+                        <div class="dns-record"><span class="dns-status dns-block">BLOCK</span> ads.tracker.io → <span class="dns-ip-blocked">0.0.0.0</span></div>
+                        <div class="dns-record"><span class="dns-status dns-local">LOCAL</span> api.myapp.test → <span class="dns-ip">127.0.0.3</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Use-case cards grid -->
+        <div class="dns-cards reveal">
+            <div class="dns-card">
+                <div class="dns-card-icon">🏢</div>
+                <h4>Multi-Tenant SaaS</h4>
+                <p>Wildcard DNS resolves <code>*.myapp.test</code> — your app reads the subdomain and routes to the right tenant. Test the real flow.</p>
+            </div>
+            <div class="dns-card">
+                <div class="dns-card-icon">🔗</div>
+                <h4>Custom Domain Routing</h4>
+                <p>Map any domain to any server via A-records. Build and test "bring your own domain" features entirely on localhost.</p>
+            </div>
+            <div class="dns-card">
+                <div class="dns-card-icon">🔀</div>
+                <h4>Microservice Routing</h4>
+                <p><code>api.*</code>, <code>admin.*</code>, <code>ws.*</code> — each subdomain mapped to a different local service with wildcard SSL.</p>
+            </div>
+            <div class="dns-card">
+                <div class="dns-card-icon">📱</div>
+                <h4>Multi-Device</h4>
+                <p>Your phone, tablet, and colleague's laptop all resolve your custom domains. Test on real devices with real URLs.</p>
+            </div>
+            <div class="dns-card">
+                <div class="dns-card-icon">🛡️</div>
+                <h4>Ad & Tracker Blocking</h4>
+                <p>Network-wide blocklists for cleaner development and distraction-free demos. One toggle.</p>
+            </div>
+            <div class="dns-card">
+                <div class="dns-card-icon">📊</div>
+                <h4>Live Query Log</h4>
+                <p>Every DNS lookup in real time — color-coded LOCAL, FORWARDED, or BLOCKED. Debug resolution issues instantly.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== HTTP/HTTPS GATEWAY (Full-width stacked) ===== -->
+<section class="gateway-feature-section" id="gateway">
+    <div class="container">
+        <div class="gateway-feature-header reveal">
+            <span class="section-label">Network Control</span>
+            <h3>The Network Is Not a Black Box.<br><span class="text-gradient">Not Anymore.</span></h3>
+            <p>Every HTTP and HTTPS request your dev environment makes — visible, inspectable, and under your control. Set breakpoints to pause requests mid-flight. Modify headers and bodies before they reach their destination. Record sessions and replay them tomorrow. Import a HAR file from Chrome DevTools and run it through your local gateway.</p>
+        </div>
+
+        <!-- Gateway Mockup -->
+        <div class="gateway-mockup-wrap reveal">
+            <div class="gateway-mockup">
+                <div class="gateway-mockup-bar">
+                    <div class="mock-bar-dots"><span class="mock-bar-dot r"></span><span class="mock-bar-dot y"></span><span class="mock-bar-dot g"></span></div>
+                    <span class="mock-bar-label">Donk Gateway — Breakpoints · 2 paused</span>
+                    <span></span>
+                </div>
+                <div class="gateway-mockup-body">
+                    <div class="gateway-mockup-col">
+                        <div class="gw-col-title">BREAKPOINTS</div>
+                        <div class="gw-bp-row"><span class="gw-enabled">●</span> <span class="gw-pattern">*.stripe.com</span> <span class="gw-phase">request</span></div>
+                        <div class="gw-bp-row"><span class="gw-enabled">●</span> <span class="gw-pattern">api.myapp.test</span> <span class="gw-phase">response</span></div>
+                        <div class="gw-bp-row dim"><span class="gw-disabled">○</span> <span class="gw-pattern">*.analytics.io</span> <span class="gw-phase">request</span></div>
+                    </div>
+                    <div class="gateway-mockup-divider"></div>
+                    <div class="gateway-mockup-col">
+                        <div class="gw-col-title">PAUSED REQUESTS</div>
+                        <div class="gw-paused-row">
+                            <span class="gw-method post">POST</span>
+                            <span class="gw-url">api.stripe.com/v1/charges</span>
+                            <span class="gw-badge request">request</span>
+                            <span class="gw-action resume">▶ Resume</span>
+                            <span class="gw-action edit">✎ Edit</span>
+                            <span class="gw-action drop">✕ Drop</span>
+                        </div>
+                        <div class="gw-paused-row">
+                            <span class="gw-method get">GET</span>
+                            <span class="gw-url">api.myapp.test/v1/users</span>
+                            <span class="gw-badge response">response</span>
+                            <span class="gw-action resume">▶ Resume</span>
+                            <span class="gw-action edit">✎ Edit</span>
+                            <span class="gw-action drop">✕ Drop</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="gateway-mockup-traffic">
+                    <div class="gw-col-title">LIVE TRAFFIC</div>
+                    <div class="gw-traffic-row"><span class="gw-method get">GET</span> <span class="gw-traffic-url">cdn.example.com/assets/main.js</span> <span class="gw-status ok">200</span> <span class="gw-dur">12ms</span></div>
+                    <div class="gw-traffic-row"><span class="gw-method post">POST</span> <span class="gw-traffic-url">api.stripe.com/v1/charges</span> <span class="gw-status paused">⏸ PAUSED</span> <span class="gw-dur">—</span></div>
+                    <div class="gw-traffic-row"><span class="gw-method get">GET</span> <span class="gw-traffic-url">api.myapp.test/v1/users</span> <span class="gw-status paused">⏸ PAUSED</span> <span class="gw-dur">—</span></div>
+                    <div class="gw-traffic-row"><span class="gw-method get">GET</span> <span class="gw-traffic-url">fonts.googleapis.com/css2?family=Inter</span> <span class="gw-status ok">200</span> <span class="gw-dur">45ms</span></div>
+                    <div class="gw-traffic-row"><span class="gw-method get">GET</span> <span class="gw-traffic-url">ads.tracker.io/pixel.gif</span> <span class="gw-status blocked">BLOCKED</span> <span class="gw-dur">0ms</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gateway use-case cards -->
+        <div class="gateway-cards reveal">
+            <div class="gw-card">
+                <div class="gw-card-icon">⏸</div>
+                <h4>Breakpoints</h4>
+                <p>Pause any request or response mid-flight. Inspect headers and body. Modify them. Resume, or drop.</p>
+            </div>
+            <div class="gw-card">
+                <div class="gw-card-icon">🔄</div>
+                <h4>Session Replay</h4>
+                <p>Record all traffic during a dev session. Replay every request later — subject to all your current gateway rules.</p>
+            </div>
+            <div class="gw-card">
+                <div class="gw-card-icon">📦</div>
+                <h4>HAR Import & Export</h4>
+                <p>Export sessions as HAR 1.2 files. Import HAR from Chrome, Firefox, Charles, Fiddler, or mitmproxy and replay.</p>
+            </div>
+            <div class="gw-card">
+                <div class="gw-card-icon">🐌</div>
+                <h4>Throttle & Simulate</h4>
+                <p>Add latency and bandwidth limits to any domain. Test loading states against real network conditions.</p>
+            </div>
+            <div class="gw-card">
+                <div class="gw-card-icon">🔍</div>
+                <h4>Session Diff</h4>
+                <p>Compare two recorded sessions. See added, removed, and changed endpoints with status and timing diffs.</p>
+            </div>
+            <div class="gw-card">
+                <div class="gw-card-icon">🌐</div>
+                <h4>System Override</h4>
+                <p>One toggle to route all system traffic through the gateway. Every browser, every app, every tool on your machine.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="rsync-deploy-section" id="rsync-deploy">
+    <div class="container">
+        <div class="section-header reveal">
+            <span class="section-label">SSH Deploy</span>
+            <h2 class="section-title">Deploy to Your Own Server.<br><span class="text-gradient">With Real Confidence.</span></h2>
+            <p class="section-desc">SSH and rsync aren't outdated — they're the backbone of every deployment system ever built. The protocol was never the problem. The problem was that nobody built a proper interface around it. Donk gives rsync the pipeline it always deserved: dry-run preview, revision backups, pre/post-deploy hooks, and connection testing. See exactly what changes before anything touches the server. Roll back instantly if something goes wrong.</p>
+        </div>
+
+        <!-- Rsync Deploy Mockup -->
+        <div class="gateway-mockup-wrap reveal">
+            <div class="gateway-mockup">
+                <div class="gateway-mockup-bar">
+                    <div class="mock-bar-dots"><span class="mock-bar-dot r"></span><span class="mock-bar-dot y"></span><span class="mock-bar-dot g"></span></div>
+                    <span class="mock-bar-label">Donk Deploy — SSH/rsync · my-api → production</span>
+                    <span></span>
+                </div>
+                <div class="gateway-mockup-body">
+                    <div class="gateway-mockup-col">
+                        <div class="gw-col-title">DEPLOY PREVIEW (DRY RUN)</div>
+                        <div class="gw-traffic-row"><span class="gw-method post" style="background:var(--success,#27ae60);">NEW</span> <span class="gw-traffic-url">src/routes/payments.py</span> <span class="gw-dur">2.4 KB</span></div>
+                        <div class="gw-traffic-row"><span class="gw-method post" style="background:var(--accent,#6c5ce7);">MOD</span> <span class="gw-traffic-url">src/main.py</span> <span class="gw-dur">1.1 KB</span></div>
+                        <div class="gw-traffic-row"><span class="gw-method post" style="background:var(--accent,#6c5ce7);">MOD</span> <span class="gw-traffic-url">requirements.txt</span> <span class="gw-dur">0.2 KB</span></div>
+                        <div class="gw-traffic-row"><span class="gw-method post" style="background:#e74c3c;">DEL</span> <span class="gw-traffic-url">src/routes/old_checkout.py</span> <span class="gw-dur">3.8 KB</span></div>
+                    </div>
+                    <div class="gateway-mockup-divider"></div>
+                    <div class="gateway-mockup-col">
+                        <div class="gw-col-title">REVISIONS</div>
+                        <div class="gw-traffic-row"><span class="gw-status ok">✓</span> <span class="gw-traffic-url">Rev #5 — Mar 12, 10:42 AM</span> <span class="gw-action resume">Restore</span></div>
+                        <div class="gw-traffic-row"><span class="gw-status ok">✓</span> <span class="gw-traffic-url">Rev #4 — Mar 11, 3:15 PM</span> <span class="gw-action resume">Restore</span></div>
+                        <div class="gw-traffic-row"><span class="gw-status ok">✓</span> <span class="gw-traffic-url">Rev #3 — Mar 10, 9:28 AM</span> <span class="gw-action resume">Restore</span></div>
+                    </div>
+                </div>
+                <div class="gateway-mockup-traffic">
+                    <div class="gw-col-title">DEPLOY LOG</div>
+                    <div class="gw-traffic-row"><span class="gw-status ok">✓</span> <span class="gw-traffic-url">Preflight checks passed</span> <span class="gw-dur"></span></div>
+                    <div class="gw-traffic-row"><span class="gw-status ok">✓</span> <span class="gw-traffic-url">Pre-deploy: systemctl stop my-api</span> <span class="gw-dur">0.8s</span></div>
+                    <div class="gw-traffic-row"><span class="gw-status ok">✓</span> <span class="gw-traffic-url">Revision backup created: rev_005.tar.gz</span> <span class="gw-dur">1.2s</span></div>
+                    <div class="gw-traffic-row"><span class="gw-status ok">✓</span> <span class="gw-traffic-url">rsync: 3 files synced, 1 deleted</span> <span class="gw-dur">2.4s</span></div>
+                    <div class="gw-traffic-row"><span class="gw-status ok">✓</span> <span class="gw-traffic-url">Post-deploy: systemctl start my-api</span> <span class="gw-dur">0.6s</span></div>
+                    <div class="gw-traffic-row"><span class="gw-status ok" style="color:var(--success,#27ae60);">✓</span> <span class="gw-traffic-url" style="color:var(--success,#27ae60);">Deploy complete — 5.0s total</span> <span class="gw-dur"></span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SSH Deploy feature cards -->
+        <div class="gateway-cards reveal">
+            <div class="gw-card">
+                <div class="gw-card-icon">🔍</div>
+                <h4>Dry-Run Preview</h4>
+                <p>See exactly which files will be created, modified, or deleted — in a visual preview dialog — before anything touches the server.</p>
+            </div>
+            <div class="gw-card">
+                <div class="gw-card-icon">💾</div>
+                <h4>Revision Backups</h4>
+                <p>Every deploy creates a compressed backup of the previous state. Roll back to any revision from the revision manager. Up to 5 kept by default.</p>
+            </div>
+            <div class="gw-card">
+                <div class="gw-card-icon">⚡</div>
+                <h4>Pre & Post-Deploy Hooks</h4>
+                <p>Run remote commands before and after sync — stop services, backup the DB, restart processes, clear caches, send notifications.</p>
+            </div>
+            <div class="gw-card">
+                <div class="gw-card-icon">🚫</div>
+                <h4>Exclude Patterns</h4>
+                <p>Keep .env, node_modules, .git, and anything you specify out of the sync. Configurable per deploy profile.</p>
+            </div>
+            <div class="gw-card">
+                <div class="gw-card-icon">🔑</div>
+                <h4>SSH Key & Connection</h4>
+                <p>Pick SSH keys from your ~/.ssh directory. Test the connection with one click. Preflight checks validate everything before deploy starts.</p>
+            </div>
+            <div class="gw-card">
+                <div class="gw-card-icon">📋</div>
+                <h4>Deploy History</h4>
+                <p>Every deploy tracked with timestamp, duration, file changes, and status. Caddy config export generates your reverse proxy setup.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<hr class="gradient-divider">
+
+<section class="feature-showcase feature-showcase-reduced">
+    <div class="container">
+
+        <!-- PaaS Deploy & Docker -->
+        <div class="feature-row reveal">
+            <div class="feature-text">
+                <span class="section-label">PaaS & Docker</span>
+                <h3>Ship It.<br>Platform or Container.</h3>
+                <p>Push to Railway, Vercel, Fly.io, Render directly from Donk via their CLIs. Or export to Docker with a framework-aware Dockerfile and docker-compose.yml generated automatically.</p>
+                <ul class="feature-list">
+                    <li><span class="icon">&#9656;</span> Railway, Vercel, Fly.io, Render via CLI</li>
+                    <li><span class="icon">&#9656;</span> One-click Docker export with all supporting files</li>
+                    <li><span class="icon">&#9656;</span> Framework-aware Dockerfile — correct base image and flags</li>
+                    <li><span class="icon">&#9656;</span> Linked databases as docker-compose services</li>
+                </ul>
+                <div class="tag-row tag-row-mt">
+                    <span class="mini-tag">Railway</span><span class="mini-tag">Vercel</span><span class="mini-tag">Fly.io</span><span class="mini-tag">Render</span><span class="mini-tag">Docker</span>
+                </div>
+            </div>
+            <div class="feature-media">
+                <img src="assets/feature-deploy.png" alt="Deploy to production">
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ===== VS CODE EXTENSION (Full-width stacked) ===== -->
+<section class="vscode-feature-section" id="vscode">
+    <div class="container">
+        <div class="vscode-feature-header reveal">
+            <span class="section-label">VS Code Extension</span>
+            <h3>Donk, Right Inside <span class="text-gradient">Your Editor.</span></h3>
+            <p>Manage servers, databases, runtimes, and secrets without leaving VS Code. The Donk sidebar gives you full control — start, stop, restart, view logs, toggle tunnels — all from the editor.</p>
+            <div class="vscode-feature-pills">
+                <span class="mini-tag">Sidebar Panels</span><span class="mini-tag">IntelliSense</span><span class="mini-tag">Copilot Tools</span><span class="mini-tag">Donk Shell</span><span class="mini-tag">Runtime Config</span><span class="mini-tag">Included</span>
+            </div>
+        </div>
+        <div class="vscode-mockup-wrap reveal">
+            <!-- Interactive VS Code Mockup -->
+            <div class="vsc-mockup">
+                <div class="vsc-titlebar">
+                    <div class="vsc-dots"><span class="d r"></span><span class="d y"></span><span class="d g"></span></div>
+                    <span class="vsc-titlebar-text">donk.toml — my-project — Visual Studio Code</span>
+                    <span class="vsc-titlebar-spacer"></span>
+                </div>
+                <div class="vsc-body">
+                    <!-- Activity Bar -->
+                    <div class="vsc-activity">
+                        <div class="vsc-act-icon" title="Explorer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"/></svg></div>
+                        <div class="vsc-act-icon" title="Search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+                        <div class="vsc-act-icon" title="Source Control"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M13 6h3a2 2 0 012 2v7"/><line x1="6" y1="9" x2="6" y2="21"/></svg></div>
+                        <div class="vsc-act-icon active vsc-act-icon-lg" title="Donk">🔶</div>
+                        <div class="vsc-act-icon" title="Extensions"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="8" height="8" rx="1"/><rect x="13" y="3" width="8" height="8" rx="1"/><rect x="3" y="13" width="8" height="8" rx="1"/><rect x="13" y="13" width="8" height="8" rx="1"/></svg></div>
+                    </div>
+                    <!-- Donk Sidebar -->
+                    <div class="vsc-sidebar">
+                        <div class="vsc-sidebar-title">Donk</div>
+                        <!-- Servers -->
+                        <div class="vsc-tree-section">
+                            <div class="vsc-tree-header"><span class="chevron">▾</span> Servers</div>
+                            <div class="vsc-tree-item active"><span class="ico">⚡</span> my-api<span class="status running">● running</span></div>
+                            <div class="vsc-tree-item"><span class="ico">▲</span> frontend<span class="status running">● running</span></div>
+                            <div class="vsc-tree-item"><span class="ico">🎵</span> blog-cms<span class="status stopped">○ stopped</span></div>
+                        </div>
+                        <!-- Databases -->
+                        <div class="vsc-tree-section">
+                            <div class="vsc-tree-header"><span class="chevron">▾</span> Databases</div>
+                            <div class="vsc-tree-item"><span class="ico">🐘</span> myapp_dev<span class="status db-on">5432</span></div>
+                            <div class="vsc-tree-item"><span class="ico">🔴</span> cache<span class="status db-on">6379</span></div>
+                        </div>
+                        <!-- Runtimes -->
+                        <div class="vsc-tree-section">
+                            <div class="vsc-tree-header"><span class="chevron">▾</span> Runtimes</div>
+                            <div class="vsc-tree-item"><span class="ico">🐍</span> Python<span class="runtime-ver">3.12.1</span></div>
+                            <div class="vsc-tree-item"><span class="ico">🟢</span> Node.js<span class="runtime-ver">20.11.0</span></div>
+                            <div class="vsc-tree-item"><span class="ico">🐘</span> PHP<span class="runtime-ver">8.3.2</span></div>
+                        </div>
+                        <!-- Secrets -->
+                        <div class="vsc-tree-section">
+                            <div class="vsc-tree-header"><span class="chevron">▸</span> Secrets <span class="tree-count-badge">4 keys</span></div>
+                        </div>
+                        <!-- Commands -->
+                        <div class="vsc-tree-section">
+                            <div class="vsc-tree-header"><span class="chevron">▾</span> Commands</div>
+                            <div class="vsc-tree-item"><span class="ico">▶</span> migrate</div>
+                            <div class="vsc-tree-item"><span class="ico">▶</span> seed</div>
+                        </div>
+                        <!-- Workers -->
+                        <div class="vsc-tree-section">
+                            <div class="vsc-tree-header"><span class="chevron">▸</span> Workers <span class="tree-count-badge">2</span></div>
+                        </div>
+                    </div>
+                    <!-- Editor -->
+                    <div class="vsc-editor">
+                        <div class="vsc-tabs">
+                            <div class="vsc-tab active"><span class="tab-icon">📄</span> donk.toml</div>
+                            <div class="vsc-tab"><span class="tab-icon">🐍</span> main.py</div>
+                        </div>
+                        <div class="vsc-code">
+                            <div class="vsc-line"><span class="vsc-line-num">1</span><span class="vsc-line-code"><span class="tok-comment"># Donk project configuration</span></span></div>
+                            <div class="vsc-line"><span class="vsc-line-num">2</span><span class="vsc-line-code"></span></div>
+                            <div class="vsc-line"><span class="vsc-line-num">3</span><span class="vsc-line-code"><span class="tok-bracket">[[</span><span class="tok-kw">servers</span><span class="tok-bracket">]]</span></span></div>
+                            <div class="vsc-line"><span class="vsc-line-num">4</span><span class="vsc-line-code"><span class="tok-key">name</span> = <span class="tok-str">"my-api"</span></span></div>
+                            <div class="vsc-line"><span class="vsc-line-num">5</span><span class="vsc-line-code"><span class="tok-key">backend</span> = <span class="tok-str">"fastapi"</span></span></div>
+                            <div class="vsc-line"><span class="vsc-line-num">6</span><span class="vsc-line-code"><span class="tok-key">port</span> = <span class="tok-val">8000</span></span></div>
+                            <div class="vsc-line"><span class="vsc-line-num">7</span><span class="vsc-line-code"><span class="tok-key">web_root</span> = <span class="tok-str">"./api"</span></span></div>
+                            <div class="vsc-line"><span class="vsc-line-num">8</span><span class="vsc-line-code"><span class="tok-key">auto_start</span> = <span class="tok-bool">true</span></span></div>
+                            <div class="vsc-line"><span class="vsc-line-num">9</span><span class="vsc-line-code"></span></div>
+                            <div class="vsc-line"><span class="vsc-line-num">10</span><span class="vsc-line-code"><span class="tok-bracket">[[</span><span class="tok-kw">servers</span><span class="tok-bracket">]]</span></span></div>
+                            <div class="vsc-line"><span class="vsc-line-num">11</span><span class="vsc-line-code"><span class="tok-key">name</span> = <span class="tok-str">"frontend"</span></span></div>
+                            <div class="vsc-line"><span class="vsc-line-num">12</span><span class="vsc-line-code"><span class="tok-key">backend</span> = <span class="tok-str">"nextjs"</span></span></div>
+                            <div class="vsc-line"><span class="vsc-line-num">13</span><span class="vsc-line-code"><span class="tok-key">port</span> = <span class="tok-val">3000</span></span></div>
+                            <div class="vsc-line"><span class="vsc-line-num">14</span><span class="vsc-line-code"></span></div>
+                            <div class="vsc-line"><span class="vsc-line-num">15</span><span class="vsc-line-code"><span class="tok-bracket">[</span><span class="tok-kw">database</span><span class="tok-bracket">]</span></span></div>
+                            <div class="vsc-line"><span class="vsc-line-num">16</span><span class="vsc-line-code"><span class="tok-key">engine</span> = <span class="tok-str">"postgres"</span></span></div>
+                            <div class="vsc-line"><span class="vsc-line-num">17</span><span class="vsc-line-code"><span class="tok-key">name</span> = <span class="tok-str">"myapp_dev"</span></span></div>
+                            <div class="vsc-line"><span class="vsc-line-num">18</span><span class="vsc-line-code"></span></div>
+                            <div class="vsc-line"><span class="vsc-line-num">19</span><span class="vsc-line-code"><span class="tok-bracket">[</span><span class="tok-kw">sharing</span><span class="tok-bracket">]</span></span></div>
+                            <div class="vsc-line"><span class="vsc-line-num">20</span><span class="vsc-line-code"><span class="tok-key">provider</span> = <span class="tok-str">"cloudflare"</span></span></div>
+                            <div class="vsc-line"><span class="vsc-line-num">21</span><span class="vsc-line-code"><span class="tok-key">auto_share</span> = <span class="tok-bool">false</span></span></div>
+                            <div class="vsc-line"><span class="vsc-line-num">22</span><span class="vsc-line-code"></span></div>
+                            <div class="vsc-line"><span class="vsc-line-num">23</span><span class="vsc-line-code"><span class="tok-bracket">[</span><span class="tok-kw">secrets</span><span class="tok-bracket">]</span></span></div>
+                            <div class="vsc-line"><span class="vsc-line-num">24</span><span class="vsc-line-code"><span class="tok-key">auto_inject</span> = <span class="tok-bool">true</span></span></div>
+                        </div>
+                        <div class="vsc-statusbar">
+                            <div class="left">
+                                <span>🔶 Donk: Connected</span>
+                                <span>2 servers running</span>
+                            </div>
+                            <div class="right">
+                                <span>TOML</span>
+                                <span>UTF-8</span>
+                                <span>LF</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Notification toast -->
+                <div class="vsc-notification">
+                    <div class="vsc-notif-header">
+                        <span class="notif-icon">🔶</span> Donk
+                    </div>
+                    <div class="vsc-notif-body">
+                        Configure VS Code to use Donk's bundled Python 3.12.1 for this workspace?
+                    </div>
+                    <div class="vsc-notif-actions">
+                        <button class="vsc-notif-btn primary">Yes, configure</button>
+                        <button class="vsc-notif-btn secondary">Not now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<hr class="gradient-divider">
+
+<!-- ===== PORTABLE RUNTIMES w/ 3D SCENE ===== -->
+<section class="section scene-section" id="runtimes">
+    <canvas class="scene-canvas" id="runtimes-canvas"></canvas>
+    <div class="scene-content">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Runtimes</span>
+                <h2 class="section-title">Portable Runtimes. <span class="text-gradient">Zero Installs.</span></h2>
+                <p class="section-desc">Python, Node.js, PHP, Go, and Bun — bundled and managed. No system installation needed. Download new versions from the GUI. Per-project version isolation.</p>
+            </div>
+            <div class="runtime-row reveal">
+                <div class="runtime-pill"><img class="runtime-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" alt="Python"><div class="info"><div class="name">Python</div><div class="sub">Bundled</div></div></div>
+                <div class="runtime-pill"><img class="runtime-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg" alt="Node.js"><div class="info"><div class="name">Node.js</div><div class="sub">Bundled</div></div></div>
+                <div class="runtime-pill"><img class="runtime-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg" alt="PHP"><div class="info"><div class="name">PHP</div><div class="sub">Bundled</div></div></div>
+                <div class="runtime-pill"><img class="runtime-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/go/go-original.svg" alt="Go"><div class="info"><div class="name">Go</div><div class="sub">Bundled</div></div></div>
+                <div class="runtime-pill"><img class="runtime-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bun/bun-original.svg" alt="Bun"><div class="info"><div class="name">Bun</div><div class="sub">Bundled</div></div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<hr class="gradient-divider">
+
+<!-- ===== FRAMEWORKS ===== -->
+<section class="orbit-section" id="frameworks">
+    <div class="container">
+        <div class="section-header reveal">
+            <span class="section-label">Frameworks</span>
+            <h2 class="section-title">22 Frameworks. <span class="text-gradient">Built-in Templates.</span></h2>
+            <p class="section-desc">Pick a template, point to your project, and Donk configures the runtime, port, and start command.</p>
+        </div>
+        <div class="framework-grid reveal">
+            <div class="fw-card"><img class="fw-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/django/django-plain.svg" alt="Django" title="Django"><div class="name">Django</div><div class="lang">Python</div></div>
+            <div class="fw-card"><img class="fw-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/fastapi/fastapi-plain.svg" alt="FastAPI" title="FastAPI"><div class="name">FastAPI</div><div class="lang">Python</div></div>
+            <div class="fw-card"><img class="fw-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flask/flask-original.svg" alt="Flask" title="Flask"><div class="name">Flask</div><div class="lang">Python</div></div>
+            <div class="fw-card"><img class="fw-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/streamlit/streamlit-original.svg" alt="Streamlit" title="Streamlit"><div class="name">Streamlit</div><div class="lang">Python</div></div>
+            <div class="fw-card"><img class="fw-logo" src="https://github.com/gradio-app/gradio/raw/main/readme_files/gradio.svg" alt="Gradio" title="Gradio"><div class="name">Gradio</div><div class="lang">Python</div></div>
+            <div class="fw-card"><img class="fw-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jupyter/jupyter-original.svg" alt="Jupyter" title="Jupyter"><div class="name">Jupyter</div><div class="lang">Python</div></div>
+            <div class="fw-card"><img class="fw-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg" alt="Next.js" title="Next.js"><div class="name">Next.js</div><div class="lang">Node.js</div></div>
+            <div class="fw-card"><img class="fw-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg" alt="Express" title="Express"><div class="name">Express</div><div class="lang">Node.js</div></div>
+            <div class="fw-card"><img class="fw-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitejs/vitejs-original.svg" alt="Vite" title="Vite"><div class="name">Vite</div><div class="lang">Node.js</div></div>
+            <div class="fw-card"><img class="fw-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/astro/astro-original.svg" alt="Astro" title="Astro"><div class="name">Astro</div><div class="lang">Node.js</div></div>
+            <div class="fw-card"><img class="fw-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/svelte/svelte-original.svg" alt="SvelteKit" title="SvelteKit"><div class="name">SvelteKit</div><div class="lang">Node.js</div></div>
+            <div class="fw-card"><img class="fw-logo" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/remix/remix-original.svg" alt="Remix" title="Remix"><div class="name">Remix</div><div class="lang">Node.js</div></div>
+            <div class="fw-card"><img class="fw-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/electron/electron-original.svg" alt="Electron" title="Electron"><div class="name">Electron</div><div class="lang">Node.js</div></div>
+            <div class="fw-card"><img class="fw-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/npm/npm-original-wordmark.svg" alt="npm" title="npm"><div class="name">npm dev</div><div class="lang">Node.js</div></div>
+            <div class="fw-card"><img class="fw-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg" alt="Node.js" title="Node.js"><div class="name">Node.js</div><div class="lang">Node.js</div></div>
+            <div class="fw-card"><img class="fw-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/laravel/laravel-original.svg" alt="Laravel" title="Laravel"><div class="name">Laravel</div><div class="lang">PHP</div></div>
+            <div class="fw-card"><img class="fw-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/symfony/symfony-original.svg" alt="Symfony" title="Symfony"><div class="name">Symfony</div><div class="lang">PHP</div></div>
+            <div class="fw-card"><img class="fw-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg" alt="PHP" title="PHP"><div class="name">PHP Built-in</div><div class="lang">PHP</div></div>
+            <div class="fw-card"><img class="fw-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/go/go-original.svg" alt="Go" title="Go"><div class="name">Go</div><div class="lang">Go</div></div>
+            <div class="fw-card"><img class="fw-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/rust/rust-original.svg" alt="Rust" title="Rust"><div class="name">Rust (Cargo)</div><div class="lang">Rust</div></div>
+            <div class="fw-card"><img class="fw-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bun/bun-original.svg" alt="Bun" title="Bun"><div class="name">Bun</div><div class="lang">Bun</div></div>
+            <div class="fw-card"><img class="fw-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" alt="Static Files" title="Static Files"><div class="name">Static Files</div><div class="lang">Any</div></div>
+        </div>
+    </div>
+</section>
+
+<hr class="gradient-divider">
+
+<!-- ===== API MOCKING ===== -->
+<section class="section" id="mocking">
+    <div class="container">
+        <div class="section-header reveal">
+            <span class="section-label">API Mocking & Interception</span>
+            <h2 class="section-title">75+ Providers. <span class="text-gradient-warm">$0.00 Spent.</span><br>Backend and Browser.</h2>
+            <p class="section-desc">Develop against OpenAI, Stripe, Twilio, and 70 more paid APIs without spending a cent. Your server calls <code>api.openai.com</code>? Mocked. Your browser calls <code>api.stripe.com</code>? Mocked. Both paths. Zero config.</p>
+        </div>
+
+        <!-- Layer 1: Mock Server + Env Vars -->
+        <div class="feature-row reveal feature-row-flush">
+            <div class="feature-text">
+                <h3>Realistic responses.<br>No API keys needed.</h3>
+                <p>Donk injects base URLs that redirect SDK calls to a built-in mock server. Response schemas match real APIs exactly. SSE streaming works out of the box for OpenAI and Anthropic.</p>
+                <ul class="feature-list">
+                    <li><span class="icon">&#9656;</span> Zero config — mocking is on by default</li>
+                    <li><span class="icon">&#9656;</span> SSE streaming for OpenAI & Anthropic</li>
+                    <li><span class="icon">&#9656;</span> Realistic embeddings (1536-dim for OpenAI…)</li>
+                    <li><span class="icon">&#9656;</span> Mock profiles — control which providers to intercept</li>
+                    <li><span class="icon">&#9656;</span> Custom routes for edge-case testing</li>
+                    <li><span class="icon">&#9656;</span> Simulated latency for loading-state testing</li>
+                    <li><span class="icon">&#9656;</span> Request log with timestamps and matched routes</li>
+                </ul>
+            </div>
+            <div class="mock-cards-col">
+                <div class="mock-card">
+                    <h4>AI / LLM <span class="count">16</span></h4>
+                    <ul><li>OpenAI, Anthropic, Google AI, Azure OpenAI, Bedrock, Mistral, Cohere, Groq, Perplexity, Together, Fireworks, OpenRouter, AI21, Replicate, HuggingFace, NLP Cloud</li></ul>
+                </div>
+                <div class="mock-card">
+                    <h4>Payments <span class="count">7</span></h4>
+                    <ul><li>Stripe, PayPal, Square, Paddle, LemonSqueezy, Razorpay, Adyen</li></ul>
+                </div>
+                <div class="mock-card">
+                    <h4>Email <span class="count">6</span></h4>
+                    <ul><li>SendGrid, Mailgun, Postmark, Resend, Amazon SES, Brevo</li></ul>
+                </div>
+                <div class="mock-card">
+                    <h4>SMS & Voice <span class="count">4</span></h4>
+                    <ul><li>Twilio, Vonage, Plivo, MessageBird</li></ul>
+                </div>
+                <div class="mock-card">
+                    <h4>Auth, Search, Maps, CRM & More <span class="count">40</span></h4>
+                    <ul><li>Firebase Auth, Auth0, Clerk, Algolia, Mapbox, HubSpot, Plaid, Shopify, DeepL, Pusher, DocuSign, Supabase, and many more…</li></ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Layer 2: Transparent Interception -->
+        <div class="feature-row reveal" style="margin-top: 4rem;">
+            <div class="feature-text">
+                <span class="section-label" style="margin-bottom: 1rem;">Transparent Interception</span>
+                <h3>Your code calls the real hostname.<br>Donk catches it anyway.</h3>
+                <p>Some SDKs hardcode the API hostname. And browser <code>fetch()</code> calls always hit the real URL — there's no <code>OPENAI_BASE_URL</code> in a browser. Donk solves both with transparent interception that works on two paths simultaneously.</p>
+                <ul class="feature-list">
+                    <li><span class="icon">&#9656;</span> <strong>Server-side</strong> — HTTP_PROXY injected into your backend process. Every outgoing request to a mocked hostname is redirected to the mock server. Even hardcoded SDKs.</li>
+                    <li><span class="icon">&#9656;</span> <strong>Browser-side</strong> — The gateway intercepts <code>fetch()</code> calls to mocked API hostnames. CORS headers injected automatically. OPTIONS preflight handled.</li>
+                    <li><span class="icon">&#9656;</span> <strong>Per-provider control</strong> — Mock OpenAI but let Stripe hit the real API. Toggle per provider, per project.</li>
+                    <li><span class="icon">&#9656;</span> <strong>Non-mocked hosts pass through</strong> — Only the providers you choose are intercepted. Everything else reaches the real internet.</li>
+                </ul>
+            </div>
+            <div class="feature-media">
+                <!-- Interception flow diagram mockup -->
+                <div class="intercept-flow-mockup" style="background: var(--surface, #1a1d27); border: 1px solid var(--border, #2e3140); border-radius: 12px; padding: 2rem; font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; line-height: 1.8; color: var(--text-secondary, #8b8fa3);">
+                    <div style="text-align: center; margin-bottom: 1.2rem; color: var(--text-primary, #e4e6f0); font-weight: 600; font-size: 0.85rem;">How interception works</div>
+                    <div style="display: grid; grid-template-columns: 1fr auto 1fr; gap: 0.5rem 1rem; align-items: center;">
+                        <div style="text-align: right;">
+                            <div style="color: var(--accent, #6c5ce7); font-weight: 600;">Server Backend</div>
+                            <div style="font-size: 0.7rem;">Python · Node · PHP · Go</div>
+                        </div>
+                        <div style="color: var(--text-secondary, #8b8fa3);">→ HTTP_PROXY →</div>
+                        <div style="color: var(--success, #27ae60); font-weight: 600;" rowspan="2">Mock Server<br><span style="font-size: 0.7rem; color: var(--text-secondary, #8b8fa3);">75+ providers · 110+ routes</span></div>
+
+                        <div style="text-align: right;">
+                            <div style="color: #f39c12; font-weight: 600;">Browser JS</div>
+                            <div style="font-size: 0.7rem;">fetch() · XMLHttpRequest</div>
+                        </div>
+                        <div style="color: var(--text-secondary, #8b8fa3);">→ Gateway →</div>
+                        <div style="color: var(--success, #27ae60); font-weight: 600;">✓ $0.00</div>
+                    </div>
+                    <div style="text-align: center; margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--border, #2e3140); font-size: 0.72rem;">
+                        <span style="color: var(--accent, #6c5ce7);">✓</span> api.openai.com &nbsp;
+                        <span style="color: var(--accent, #6c5ce7);">✓</span> api.stripe.com &nbsp;
+                        <span style="color: var(--accent, #6c5ce7);">✓</span> api.anthropic.com &nbsp;
+                        <span style="color: #8b8fa3;">+ 66 more</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<hr class="gradient-divider">
+
+<!-- ===== DONK DOCTOR ===== -->
+<section class="doctor-section" id="doctor">
+    <div class="container">
+        <div class="section-header reveal">
+            <span class="section-label">Security</span>
+            <h2 class="section-title">Your code works.<br><span class="text-gradient">But is it safe?</span></h2>
+            <p class="section-desc">Donk Doctor is a one-click security health check built right into your dev environment. It reads your entire project — source code, dependencies, live endpoints — and comes back with a straight answer before you ship.</p>
+        </div>
+
+        <div class="feature-row reveal">
+            <div class="feature-text">
+                <span class="section-label">What Doctor checks</span>
+                <h3>Every angle.<br>One click.</h3>
+                <p>No security expertise required. No configuration files. No separate tool to install. The Doctor knows your project because Donk already does — your framework, your routes, your running server. That's what makes its findings real.</p>
+                <ul class="feature-list">
+                    <li><span class="icon">&#9656;</span> <strong>Dependencies</strong> — every package scanned against the CVE database, flagged by severity</li>
+                    <li><span class="icon">&#9656;</span> <strong>Hardcoded secrets</strong> — API keys, passwords, and tokens that shouldn't be in your code</li>
+                    <li><span class="icon">&#9656;</span> <strong>Static analysis (SAST)</strong> — full engine with 20+ patterns at AST-level precision: eval(), exec(), SQL injection, command injection, insecure deserialization, debug flags, permissive CORS, open redirects</li>
+                    <li><span class="icon">&#9656;</span> <strong>Route intelligence</strong> — full AST-based extraction of every API endpoint with correct prefixes</li>
+                    <li><span class="icon">&#9656;</span> <strong>Live endpoint probing</strong> — hits every write route without credentials and reports what answered</li>
+                    <li><span class="icon">&#9656;</span> <strong>Sensitive route exposure</strong> — admin panels, license endpoints, integration routes exposed to the public</li>
+                    <li><span class="icon">&#9656;</span> <strong>Semgrep</strong> (when available) — hundreds of additional rules across OWASP Top 10</li>
+                </ul>
+            </div>
+
+            <!-- Doctor Report Mockup -->
+            <div class="doctor-mockup">
+                <div class="doctor-titlebar">
+                    <div class="dr-dots"><span class="d r"></span><span class="d y"></span><span class="d g"></span></div>
+                    <span class="dr-title">🩺 Donk Doctor — my-api</span>
+                    <span class="dr-meta">198 routes · 3.2s</span>
+                </div>
+                <div class="doctor-body">
+                    <div class="dr-summary">
+                        <span class="dr-sum-item err"><span class="dr-dot err-dot"></span> 1 error</span>
+                        <span class="dr-sum-item warn"><span class="dr-dot warn-dot"></span> 4 warnings</span>
+                        <span class="dr-sum-item ok"><span class="dr-dot ok-dot"></span> 6 passed</span>
+                    </div>
+                    <div class="dr-category">
+                        <div class="dr-cat-header ok-header"><span class="dr-cat-icon">✓</span> Dependency Audit <span class="dr-cat-badge ok-badge">OK</span></div>
+                        <div class="dr-item ok-item"><span>All 47 packages — no known CVEs</span></div>
+                    </div>
+                    <div class="dr-category">
+                        <div class="dr-cat-header ok-header"><span class="dr-cat-icon">✓</span> Hardcoded Secrets <span class="dr-cat-badge ok-badge">OK</span></div>
+                        <div class="dr-item ok-item"><span>No plaintext credentials found in source</span></div>
+                    </div>
+                    <div class="dr-category">
+                        <div class="dr-cat-header warn-header"><span class="dr-cat-icon">⚠</span> Sensitive Route Exposure <span class="dr-cat-badge warn-badge">4 WARNINGS</span></div>
+                        <div class="dr-item warn-item"><span class="dr-route">GET /health</span><span class="dr-note">exposed health check — no auth required</span></div>
+                        <div class="dr-item warn-item"><span class="dr-route">GET, POST /api/v1/admin/users</span><span class="dr-note">admin user management — publicly reachable</span></div>
+                        <div class="dr-item warn-item"><span class="dr-route">POST /api/v1/admin/licenses/generate</span><span class="dr-note">license generation endpoint — verify auth middleware</span></div>
+                        <div class="dr-item warn-item"><span class="dr-route">DELETE /api/v1/admin/plans/{id}</span><span class="dr-note">admin plans — confirm role-based protection</span></div>
+                    </div>
+                    <div class="dr-category">
+                        <div class="dr-cat-header err-header"><span class="dr-cat-icon">✕</span> Unauthenticated Write Access <span class="dr-cat-badge err-badge">1 ERROR</span></div>
+                        <div class="dr-item err-item"><span class="dr-route">DELETE /api/v1/ecommerce/{hash}</span><span class="dr-note">→ 500 · SessionMiddleware missing — endpoint reachable without login</span></div>
+                    </div>
+                    <div class="dr-category">
+                        <div class="dr-cat-header ok-header"><span class="dr-cat-icon">✓</span> Unauth Write — All Other Routes <span class="dr-cat-badge ok-badge">109 PROTECTED</span></div>
+                        <div class="dr-item ok-item"><span>All 109 write endpoints returned 401 / 403 / redirect without credentials</span></div>
+                    </div>
+                </div>
+                <div class="dr-footer">
+                    <span>Scanned 198 routes · 47 packages · 312 source files</span>
+                    <span class="dr-time">3.2s</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Three pillars -->
+        <div class="doctor-pillars reveal">
+            <div class="doctor-pillar">
+                <div class="pillar-icon">🔍</div>
+                <h4>Reads Your Code</h4>
+                <p>AST-level analysis. Not grep. It understands your framework's route structure, import graph, and dependency tree — catching things pattern matching never could.</p>
+            </div>
+            <div class="doctor-pillar">
+                <div class="pillar-icon">🚪</div>
+                <h4>Knocks on Every Door</h4>
+                <p>Live endpoint probing without credentials — the same moves an attacker would make on day one. Real findings from a running server, not theoretical guesses.</p>
+            </div>
+            <div class="doctor-pillar">
+                <div class="pillar-icon">📋</div>
+                <h4>Clear Verdict</h4>
+                <p>Red means fix it. Amber means review it. Green means ship it. No CVE dictionaries to interpret. No 200-page PDF report. Just the truth about your project.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<hr class="gradient-divider">
+
+<!-- ===== HOW IT WORKS ===== -->
+<section class="steps-section" id="how">
+    <div class="container">
+        <div class="section-header reveal">
+            <span class="section-label">How It Works</span>
+            <h2 class="section-title">Three steps. <span class="text-gradient">That's it.</span></h2>
+        </div>
+        <div class="steps-grid reveal">
+            <div class="step-card">
+                <div class="step-num">1</div>
+                <h3>Install Donk</h3>
+                <p>Download and run the installer. Runtimes are bundled — Python, Node, PHP, Go, Bun all ready immediately. No PATH fights.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-num">2</div>
+                <h3>Add a Server</h3>
+                <p>Pick a framework template — Django, Next.js, Laravel, anything — and point to your project folder. Runtime, port, and start command are configured for you.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-num">3</div>
+                <h3>Start Building</h3>
+                <p>One click to start. Open the gateway to see every request. Set a breakpoint. Record a session. Share with a tunnel. Deploy when ready. Donk handles infrastructure so you can focus on code.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<hr class="gradient-divider">
+
+<!-- ===== CLI ===== -->
+<section class="cli-section" id="cli">
+    <div class="container">
+        <div class="section-header reveal">
+            <span class="section-label">CLI & API</span>
+            <h2 class="section-title">Power users, <span class="text-gradient">we got you.</span></h2>
+            <p class="section-desc">Everything in the GUI is available from the CLI. Plus a full REST API for automation and scripting.</p>
+        </div>
+        <div class="cli-window reveal">
+            <div class="cli-bar">
+                <div class="cli-dot r"></div><div class="cli-dot y"></div><div class="cli-dot g"></div>
+                <span>Donk Shell</span>
+            </div>
+            <div class="cli-body">
+                <div><span class="c-comment"># Add a FastAPI project</span></div>
+                <div><span class="c-prompt">❯ </span><span class="c-cmd">donk add my-api </span><span class="c-flag">--backend fastapi --web-root</span><span class="c-cmd"> ./api</span></div>
+                <div><span class="c-out">  ✓ Server "my-api" created</span></div>
+                <br>
+                <div><span class="c-comment"># Start it</span></div>
+                <div><span class="c-prompt">❯ </span><span class="c-cmd">donk start my-api</span></div>
+                <div><span class="c-out">  ✓ my-api running on http://localhost:8000</span></div>
+                <br>
+                <div><span class="c-comment"># Share with the world</span></div>
+                <div><span class="c-prompt">❯ </span><span class="c-cmd">donk share my-api </span><span class="c-flag">--provider cloudflare</span></div>
+                <div><span class="c-out">  ✓ Tunnel → https://my-api-abc123.trycloudflare.com</span></div>
+                <br>
+                <div><span class="c-comment"># Provision a database</span></div>
+                <div><span class="c-prompt">❯ </span><span class="c-cmd">donk db create </span><span class="c-flag">--engine postgres --name</span><span class="c-cmd"> mydb</span></div>
+                <div><span class="c-out">  ✓ PostgreSQL "mydb" running on port 5432</span></div>
+                <br>
+                <div><span class="c-comment"># Deploy when ready</span></div>
+                <div><span class="c-prompt">❯ </span><span class="c-cmd">donk deploy my-api </span><span class="c-flag">--target railway</span></div>
+                <div><span class="c-out">  ✓ Deployed → https://my-api.up.railway.app</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<hr class="gradient-divider">
+
+<!-- ===== PLANS & WAITLIST ===== -->
+<section class="section" id="pricing">
+    <div class="container">
+        <div class="section-header reveal">
+            <span class="section-label">Plans</span>
+            <h2 class="section-title">One-time purchase. <span class="text-gradient">1 year of updates.</span></h2>
+            <p class="section-desc">No subscriptions. Pay once, own it forever. Updates included for a full year. Pricing announced at launch.</p>
+        </div>
+
+        <div class="plans-grid reveal">
+            <!-- Dev Plan -->
+            <div class="plan-card">
+                <div class="plan-badge">For Individuals</div>
+                <h3 class="plan-name">Dev</h3>
+                <div class="plan-price">
+                    <span class="plan-price-tbd text-gradient">Price TBA</span>
+                    <span class="plan-price-period">one-time · 1 year updates</span>
+                </div>
+                <ul class="plan-features">
+                    <li><span class="check">✓</span> All 22 framework templates</li>
+                    <li><span class="check">✓</span> 5 bundled runtimes</li>
+                    <li><span class="check">✓</span> 5 database engines + visual viewer + snapshots</li>
+                    <li><span class="check">✓</span> 75+ mocked API providers</li>
+                    <li><span class="check">✓</span> 5 tunnel providers for sharing</li>
+                    <li><span class="check">✓</span> SSL, custom domains, secrets vault</li>
+                    <li><span class="check">✓</span> Deploy — Railway, Vercel, Fly.io, Render, SSH</li>
+                    <li><span class="check">✓</span> Docker export</li>
+                    <li><span class="check">✓</span> VS Code extension</li>
+                    <li><span class="check">✓</span> GUI + CLI + REST API + Web Dashboard</li>
+                    <li><span class="check">✓</span> HTTP/HTTPS Gateway</li>
+                    <li><span class="check">✓</span> Donk Doctor — security scanner</li>
+                </ul>
+                <a href="#waitlist" class="btn btn-ghost btn-full">Join the Waitlist</a>
+            </div>
+
+            <!-- Enterprise Plan -->
+            <div class="plan-card plan-card-featured">
+                <div class="plan-badge plan-badge-accent">For Teams</div>
+                <h3 class="plan-name">Enterprise</h3>
+                <div class="plan-price">
+                    <span class="plan-price-tbd text-gradient">Price TBA</span>
+                    <span class="plan-price-period">per seat · 1 year updates</span>
+                </div>
+                <ul class="plan-features">
+                    <li><span class="check">✓</span> Everything in Dev</li>
+                    <li><span class="check">✓</span> Team license management</li>
+                    <li><span class="check">✓</span> Priority support</li>
+                    <li><span class="check">✓</span> Custom onboarding</li>
+                    <li><span class="check">✓</span> Volume discounts</li>
+                </ul>
+                <a href="#waitlist" class="btn btn-primary btn-full">Join the Waitlist</a>
+            </div>
+        </div>
+
+        <div class="plans-note reveal">
+            <p>Both plans are a <strong>one-time purchase</strong> with <strong>1 year of updates</strong> included. After the first year, you can optionally renew for continued updates — or keep using the version you have, forever.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ===== ORIGIN STORY ===== -->
+<section class="dev-statement-section">
+    <div class="container">
+        <div class="dev-statement reveal">
+            <span class="section-label">Why this exists</span>
+            <h2>17 years of workarounds.<br>One app to end them all.</h2>
+
+            <p class="dev-statement-line">It started with Dreamweaver's built-in server. Then WAMP. Then XAMPP when I moved to PHP. Every upgrade cycle was the same story &mdash; I needed a new PHP version, but I had to wait for XAMPP to ship a new release just so I could use it. The thing I actually wanted was the runtime. The thing I got was a bundled installer on someone else's schedule.</p>
+
+            <p class="dev-statement-line">So I started compiling PHP from source. On Windows. Solving extension conflicts by hand, hunting down the right <code>php_*.dll</code>, matching thread-safe builds to the right VC++ redistributable. I wrote a batch script to automate the whole thing &mdash; because if I'm going to fight this fight, I'm only fighting it once.</p>
+
+            <p class="dev-statement-line">Then I built a custom Python-based dev server &mdash; and that was the end of XAMPP for me. It was so good I started using it for my JavaScript and TypeScript projects too, instead of the dev servers that ship with bundlers. That server pulled me all the way into Python, and I never looked back.</p>
+
+            <p class="dev-statement-line">Every project I built introduced a new challenge and a new learning curve. And trust me &mdash; I've built a lot of them. Custom domains. WSL. SSL certificates that had to loop back into WSL correctly. Every time I hit a wall, I wrote another script. Another workaround. Another thing that "just works" &mdash; on my machine, for my setup, until the next Windows update broke something.</p>
+
+            <p class="dev-statement-line">After 17 years of building on Windows &mdash; patching, scripting, automating the ugly parts of local development &mdash; I realized all these solutions needed a home. Not just for me. For the new wave of developers, the vibe coders picking up their first framework, and the experienced devs who are tired of fighting the same fights.</p>
+
+            <p class="dev-statement-closing">That's Donk. Every workaround I ever wrote, distilled into one app. Every problem described in the section above &mdash; the runtime circus, the terminal zoo, the database gauntlet, the secrets catastrophe &mdash; solved. Not because I read about these problems. Because I lived them.</p>
+
+            <p class="dev-statement-tagline">Stop fighting your OS.<br>Start shipping.<br>Donk handles the rest.</p>
+        </div>
+    </div>
+</section>
+
+<hr class="gradient-divider">
+
+<!-- ===== FINAL CTA / WAITLIST ===== -->
+<section class="cta-section" id="waitlist">
+    <div class="container">
+        <div class="reveal">
+            <h2>Be first in line. <span class="text-gradient">Launching soon.</span></h2>
+            <p>One-time purchase. 1 year of updates. Dev & Enterprise plans. Join the waitlist and we'll let you know the moment it's ready.</p>
+            <form class="waitlist-form waitlist-form-cta" id="ctaWaitlistForm" onsubmit="return handleWaitlist(event, this)">
+                <div class="waitlist-input-wrap">
+                    <input type="email" name="email" placeholder="you@example.com" required class="waitlist-input" autocomplete="email">
+                    <button type="submit" class="btn btn-primary btn-waitlist">Join the Waitlist</button>
+                </div>
+                <div class="waitlist-msg" id="ctaWaitlistMsg"></div>
+            </form>
+            <p class="cta-meta">Windows 10/11 &middot; ~230 MB &middot; No dependencies required</p>
+        </div>
+    </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+    <div class="container">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <img src="assets/donk_64.png" alt="Donk"> Donk
+            </div>
+            <div class="footer-links">
+                <a href="#">Documentation</a>
+                <a href="#">Changelog</a>
+                <a href="#">GitHub</a>
+            </div>
+        </div>
+        <p class="footer-quote">"Built for developers who are tired of fighting their OS to spin up a server."</p>
+    </div>
+</footer>
+
+<!-- ==============================================
+     THREE.JS SCENES & INTERACTIONS
+     ============================================== -->
+<script src="assets/main.js"></script>
+
+</body>
+</html>

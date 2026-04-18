@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Database Snapshots — Donk</title>
+    <meta name="description" content="Save your database at any point and restore it instantly. 10 snapshots per database. Like save slots in a video game.">
+    <link rel="icon" type="image/png" href="../../assets/donk_64.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDCEDXD09F"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LDCEDXD09F');
+</script>
+</head>
+<body>
+<nav class="nav" id="nav"></nav>
+
+<section class="feature-page-hero">
+    <div class="container">
+        <span class="section-label">Snapshots</span>
+        <h1>Save. Break things.<br><span class="text-gradient">Restore in seconds.</span></h1>
+        <p class="subtitle">Up to 10 snapshots per database. Name them. Restore instantly. Like save slots in a video game.</p>
+    </div>
+</section>
+
+<section class="feature-content">
+    <div class="container">
+        <div class="feature-text">
+            <p>You're about to run a migration that restructures three tables. If it goes wrong, you'll spend an hour manually undoing the damage or re-seeding from scratch. With Donk snapshots, you save the current state in one click — "before-migration" — run the migration, and if it breaks, restore the snapshot. Your database is back to exactly where it was. Three seconds.</p>
+
+            <ul class="feature-bullets">
+                <li>Up to 10 named snapshots per database instance</li>
+                <li><strong>SQLite</strong> — instant file copy</li>
+                <li><strong>PostgreSQL</strong> — <code>pg_dump</code> / <code>pg_restore</code></li>
+                <li><strong>MySQL</strong> — <code>mysqldump</code> / <code>mysql</code></li>
+                <li><strong>MongoDB</strong> — export and re-import collections</li>
+                <li><strong>Redis (Garnet)</strong> — data directory copy</li>
+                <li>Label snapshots — "before migration", "clean seed", "demo data"</li>
+                <li>Visual snapshot list with timestamps, sizes, and one-click restore</li>
+                <li>CLI access — <code>donk db snapshot create mydb --label before-migration</code></li>
+            </ul>
+
+            <div class="feature-video-placeholder">
+                <div class="video-icon">🎬</div>
+                <p>Video: 25–35 seconds. Saving a snapshot, running a destructive migration, restoring the snapshot.</p>
+            </div>
+        </div>
+        <div class="feature-nav">
+            <a href="database-viewer.html">← Viewer</a>
+            <a href="smart-seeder.html">Smart Seeder →</a>
+        </div>
+    </div>
+</section>
+
+<section class="feature-cta-section"><div class="container"><h3>Download Donk</h3><p>Windows 10/11 · ~230 MB · No dependencies</p><a href="../#download" class="btn btn-primary">Download for Windows</a></div></section>
+<footer><div class="container"><div class="footer-inner"><div class="footer-brand"><img src="../assets/donk_64.png" alt="Donk"> Donk</div><div class="footer-links"><a href="../">Home</a><a href="./">Features</a></div></div></div></footer>
+<script>const o=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');o.unobserve(x.target)}})},{threshold:.1});document.querySelectorAll('.reveal').forEach(el=>o.observe(el));</script>
+<script src="../assets/feature-nav.js"></script>
+</body>
+</html>

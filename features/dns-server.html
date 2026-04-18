@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DNS Server & Domain Routing — Donk</title>
+    <meta name="description" content="A real DNS server on your machine. Per-server IPs, wildcard resolution, custom A-records, multi-device, and network-wide ad blocking.">
+    <link rel="icon" type="image/png" href="../../assets/donk_64.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDCEDXD09F"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LDCEDXD09F');
+</script>
+</head>
+<body>
+<nav class="nav" id="nav"></nav>
+
+<section class="feature-page-hero">
+    <div class="container">
+        <span class="section-label">DNS & Routing</span>
+        <h1>Production DNS.<br><span class="text-gradient">On your laptop.</span></h1>
+        <p class="subtitle">A real DNS server — not a hosts file hack. Each server gets its own IP. Create A-records to test custom domain routing. Network-wide ad blocking included.</p>
+    </div>
+</section>
+
+<section class="feature-content">
+    <div class="container">
+        <div class="feature-text">
+            <p>You're building something that depends on domain routing. Multi-tenant SaaS where <code>acme.myapp.com</code> goes to one tenant and <code>beta-corp.myapp.com</code> goes to another. Or a platform with custom domains — your customer maps <code>store.acme.com</code> to your app. In production, this works because DNS resolves the domain to your server. In development, it doesn't — because <code>myapp.test</code> resolves to nothing.</p>
+            <p>Donk runs a lightweight DNS server on your machine. Each server you register gets its own loopback IP — <code>127.0.0.2</code>, <code>127.0.0.3</code>, etc. — so you can run multiple servers on the same port without conflicts. Create A-records that point any custom domain to any server's IP. Enable wildcard resolution for <code>*.myapp.test</code>. Every device on your LAN resolves through Donk's DNS.</p>
+
+            <ul class="feature-bullets">
+                <li>Per-server loopback IPs — multiple servers on port 443, no conflicts</li>
+                <li>Custom A-records — map any domain to any server</li>
+                <li>Wildcard DNS resolution for subdomain-based routing</li>
+                <li>Live query log — every DNS lookup color-coded: LOCAL, FORWARDED, BLOCKED</li>
+                <li>Multi-device — phones, tablets, colleague laptops resolve your custom domains</li>
+                <li>Network-wide ad and tracker blocking — blocklist toggle</li>
+                <li>Non-local queries forwarded transparently — the internet still works</li>
+            </ul>
+
+            <div class="feature-video-placeholder">
+                <div class="video-icon">🎬</div>
+                <p>Video: 35–45 seconds. Creating DNS records, resolving from a browser, live query log, ad blocking toggle.</p>
+            </div>
+        </div>
+        <div class="feature-nav">
+            <a href="ssl-custom-domains.html">← SSL</a>
+            <a href="subdomain-tenant-routing.html">Subdomain Routing →</a>
+        </div>
+    </div>
+</section>
+
+<section class="feature-cta-section"><div class="container"><h3>Download Donk</h3><p>Windows 10/11 · ~230 MB · No dependencies</p><a href="../#download" class="btn btn-primary">Download for Windows</a></div></section>
+<footer><div class="container"><div class="footer-inner"><div class="footer-brand"><img src="../assets/donk_64.png" alt="Donk"> Donk</div><div class="footer-links"><a href="../">Home</a><a href="./">Features</a></div></div></div></footer>
+<script>const o=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');o.unobserve(x.target)}})},{threshold:.1});document.querySelectorAll('.reveal').forEach(el=>o.observe(el));</script>
+<script src="../assets/feature-nav.js"></script>
+</body>
+</html>

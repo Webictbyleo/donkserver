@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Docker Export — Donk</title>
+    <meta name="description" content="Framework-aware Dockerfile + docker-compose.yml + .env generated automatically. One click to containerize your project.">
+    <link rel="icon" type="image/png" href="../../assets/donk_64.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDCEDXD09F"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LDCEDXD09F');
+</script>
+</head>
+<body>
+<nav class="nav" id="nav"></nav>
+
+<section class="feature-page-hero">
+    <div class="container">
+        <span class="section-label">Docker</span>
+        <h1>One click.<br><span class="text-gradient">Dockerized.</span></h1>
+        <p class="subtitle">Donk generates a framework-aware Dockerfile, docker-compose.yml, and .env file. Your project containerized without writing a single line of Docker config.</p>
+    </div>
+</section>
+
+<section class="feature-content">
+    <div class="container">
+        <div class="feature-text">
+            <p>You need to give your project to a colleague, deploy to a Docker-based platform, or just ensure the build works outside your machine. Writing a Dockerfile from scratch means knowing the right base image, the right install commands, the right CMD — and getting it wrong means 45 minutes of trial and error.</p>
+            <p>Donk knows your framework, your runtime version, your dependencies, your start command, and your environment variables. Click "Export to Docker" and Donk generates a complete set of files — <code>Dockerfile</code>, <code>docker-compose.yml</code>, and <code>.env.example</code> — tailored to your exact project setup.</p>
+
+            <ul class="feature-bullets">
+                <li>Framework-aware Dockerfile — correct base image, install steps, CMD</li>
+                <li>Multi-stage builds for optimized production images</li>
+                <li><code>docker-compose.yml</code> with your databases and services</li>
+                <li><code>.env.example</code> generated with all required variables (values redacted)</li>
+                <li><code>.dockerignore</code> generated to keep images small</li>
+                <li>Preview the generated files before writing them to disk</li>
+                <li>CLI access — <code>donk docker export my-api</code></li>
+            </ul>
+
+            <div class="feature-video-placeholder">
+                <div class="video-icon">🎬</div>
+                <p>Video: 25–35 seconds. Exporting a Django project to Docker. Reviewing the generated Dockerfile. Building and running the container.</p>
+            </div>
+        </div>
+        <div class="feature-nav">
+            <a href="deploy.html">← Deploy</a>
+            <a href="wsl-integration.html">WSL →</a>
+        </div>
+    </div>
+</section>
+
+<section class="feature-cta-section"><div class="container"><h3>Download Donk</h3><p>Windows 10/11 · ~230 MB · No dependencies</p><a href="../#download" class="btn btn-primary">Download for Windows</a></div></section>
+<footer><div class="container"><div class="footer-inner"><div class="footer-brand"><img src="../assets/donk_64.png" alt="Donk"> Donk</div><div class="footer-links"><a href="../">Home</a><a href="./">Features</a></div></div></div></footer>
+<script>const o=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');o.unobserve(x.target)}})},{threshold:.1});document.querySelectorAll('.reveal').forEach(el=>o.observe(el));</script>
+<script src="../assets/feature-nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portable Runtimes — Donk</title>
+    <meta name="description" content="Python, Node.js, PHP, Go, Bun — bundled and managed. No system installs. No PATH conflicts. Per-project version isolation.">
+    <link rel="icon" type="image/png" href="../../assets/donk_64.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDCEDXD09F"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LDCEDXD09F');
+</script>
+</head>
+<body>
+<nav class="nav" id="nav"></nav>
+
+<section class="feature-page-hero">
+    <div class="container">
+        <span class="section-label">Runtimes</span>
+        <h1><code>python not found</code><br><span class="text-gradient">Never again.</span></h1>
+        <p class="subtitle">Python, Node.js, PHP, Go, and Bun — bundled inside Donk. No system installs. No PATH conflicts. Version isolation per project.</p>
+    </div>
+</section>
+
+<section class="feature-content">
+    <div class="container">
+        <div class="feature-text">
+            <p>You installed Python from python.org. Then you installed it again from the Microsoft Store because something wasn't working. Then you installed pyenv-win because a project needed 3.10 and you already had 3.12. Now <code>python</code> doesn't resolve at all and <code>py -3.10</code> points to the wrong installation.</p>
+            <p>Donk bundles Python, Node.js, PHP, Go, and Bun as portable, self-contained installations. They live inside Donk's data directory — never touching your system PATH, never conflicting with anything you already have installed. When a server starts, Donk puts the correct runtime on PATH for that process.</p>
+
+            <h2>Supported Runtimes</h2>
+            <div class="runtime-row reveal" style="margin: 2rem 0 3rem; justify-content: center;">
+                <div class="runtime-pill"><img class="runtime-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" alt="Python"><div class="info"><div class="name">Python</div><div class="sub">Bundled</div></div></div>
+                <div class="runtime-pill"><img class="runtime-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg" alt="Node.js"><div class="info"><div class="name">Node.js</div><div class="sub">Bundled</div></div></div>
+                <div class="runtime-pill"><img class="runtime-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg" alt="PHP"><div class="info"><div class="name">PHP</div><div class="sub">Bundled</div></div></div>
+                <div class="runtime-pill"><img class="runtime-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/go/go-original.svg" alt="Go"><div class="info"><div class="name">Go</div><div class="sub">Bundled</div></div></div>
+                <div class="runtime-pill"><img class="runtime-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bun/bun-original.svg" alt="Bun"><div class="info"><div class="name">Bun</div><div class="sub">Bundled</div></div></div>
+            </div>
+
+            <ul class="feature-bullets">
+                <li>Portable — no system installation, no PATH pollution, no admin rights</li>
+                <li>Per-project version isolation — one project on Python 3.10, another on 3.12</li>
+                <li>Download additional versions from the GUI — one click, verified checksums</li>
+                <li>Built-in terminal with the correct runtime on PATH — type <code>python</code> and it works</li>
+                <li>"Use system runtime" option — point to your own installation if you prefer</li>
+                <li>Composer and pip managed through Donk — package installs just work</li>
+            </ul>
+
+            <div class="feature-video-placeholder">
+                <div class="video-icon">🎬</div>
+                <p>Video: 30–40 seconds. A fresh Windows install with no Python — Donk opens, Django project starts, <code>python --version</code> works in the Donk terminal.</p>
+            </div>
+        </div>
+        <div class="feature-nav">
+            <a href="framework-templates.html">← Frameworks</a>
+            <a href="secrets-vault.html">Secrets Vault →</a>
+        </div>
+    </div>
+</section>
+
+<section class="feature-cta-section"><div class="container"><h3>Download Donk</h3><p>Windows 10/11 · ~230 MB · No dependencies</p><a href="../#download" class="btn btn-primary">Download for Windows</a></div></section>
+<footer><div class="container"><div class="footer-inner"><div class="footer-brand"><img src="../assets/donk_64.png" alt="Donk"> Donk</div><div class="footer-links"><a href="../">Home</a><a href="./">Features</a></div></div></div></footer>
+<script>const o=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');o.unobserve(x.target)}})},{threshold:.1});document.querySelectorAll('.reveal').forEach(el=>o.observe(el));</script>
+<script src="../assets/feature-nav.js"></script>
+</body>
+</html>

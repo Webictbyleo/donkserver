@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Email Server — Donk</title>
+    <meta name="description" content="MailPit — catch every email your app sends. SMTP on port 1025. Web inbox on 8025. Optional relay to real providers.">
+    <link rel="icon" type="image/png" href="../../assets/donk_64.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDCEDXD09F"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LDCEDXD09F');
+</script>
+</head>
+<body>
+<nav class="nav" id="nav"></nav>
+
+<section class="feature-page-hero">
+    <div class="container">
+        <span class="section-label">Email</span>
+        <h1>Catch every email.<br><span class="text-gradient">Without sending any.</span></h1>
+        <p class="subtitle">MailPit runs a local SMTP server. Every email your app sends lands in a web inbox on your machine. Nothing reaches real inboxes during development.</p>
+    </div>
+</section>
+
+<section class="feature-content">
+    <div class="container">
+        <div class="feature-text">
+            <p>Your app sends a welcome email. During development, you either disable the email code (and forget to re-enable it), set up a test account on Mailtrap, or accidentally send "TEST TEST TEST" to a real customer. None of these are good.</p>
+            <p>Donk bundles MailPit — a lightweight email catcher. It runs SMTP on port 1025 and a web inbox on port 8025. Point your app's SMTP config at <code>localhost:1025</code> and every email lands in the MailPit inbox. You see the full rendered HTML, headers, attachments — everything. Nothing leaves your machine.</p>
+
+            <ul class="feature-bullets">
+                <li>MailPit SMTP server on port 1025 — catches every outgoing email</li>
+                <li>Web inbox on port 8025 — full HTML render, headers, attachments</li>
+                <li>SMTP credentials auto-injected as environment variables</li>
+                <li>Optional relay to a real provider — SendGrid, SES, Mailgun — for end-to-end testing</li>
+                <li>Mark as read, delete, search by subject or recipient</li>
+                <li>API access for automated testing — verify that the right email was sent</li>
+            </ul>
+
+            <div class="feature-video-placeholder">
+                <div class="video-icon">🎬</div>
+                <p>Video: 25–35 seconds. App sends a registration email → open MailPit web inbox → see the rendered HTML email.</p>
+            </div>
+        </div>
+        <div class="feature-nav">
+            <a href="background-workers.html">← Workers</a>
+            <a href="deploy.html">Deploy →</a>
+        </div>
+    </div>
+</section>
+
+<section class="feature-cta-section"><div class="container"><h3>Download Donk</h3><p>Windows 10/11 · ~230 MB · No dependencies</p><a href="../#download" class="btn btn-primary">Download for Windows</a></div></section>
+<footer><div class="container"><div class="footer-inner"><div class="footer-brand"><img src="../assets/donk_64.png" alt="Donk"> Donk</div><div class="footer-links"><a href="../">Home</a><a href="./">Features</a></div></div></div></footer>
+<script>const o=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');o.unobserve(x.target)}})},{threshold:.1});document.querySelectorAll('.reveal').forEach(el=>o.observe(el));</script>
+<script src="../assets/feature-nav.js"></script>
+</body>
+</html>

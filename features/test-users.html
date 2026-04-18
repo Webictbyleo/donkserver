@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Users & Auth Bypass — Donk</title>
+    <meta name="description" content="Create test users with automatic login bypass. Supports Basic Auth, Bearer tokens, API keys, and session cookies.">
+    <link rel="icon" type="image/png" href="../../assets/donk_64.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDCEDXD09F"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LDCEDXD09F');
+</script>
+</head>
+<body>
+<nav class="nav" id="nav"></nav>
+
+<section class="feature-page-hero">
+    <div class="container">
+        <span class="section-label">Auth</span>
+        <h1>Log in as anyone.<br><span class="text-gradient">Instantly.</span></h1>
+        <p class="subtitle">Create test users with automatic login bypass. The gateway injects credentials transparently — Basic Auth, Bearer, API keys, session cookies.</p>
+    </div>
+</section>
+
+<section class="feature-content">
+    <div class="container">
+        <div class="feature-text">
+            <p>You need to test a feature as an admin. Then as a regular user. Then as an unauthenticated visitor. Each time: log out, switch to a different test account, log in, navigate back to the page you were testing. It's three minutes of friction every time you want to see the same page from a different perspective.</p>
+            <p>Donk lets you define test users with names, roles, and credentials. Each user gets a unique proxy URL. Open <code>admin.my-api.test</code> and you're logged in as admin. Open <code>viewer.my-api.test</code> and you're the viewer. The gateway injects the correct authentication headers automatically — your app sees a legitimate authenticated request.</p>
+
+            <ul class="feature-bullets">
+                <li>Define test users with name, role, and credentials</li>
+                <li>Per-user proxy URLs — <code>admin.myapp.test</code>, <code>viewer.myapp.test</code></li>
+                <li>Supports Basic Auth, Bearer tokens, API keys, and session cookies</li>
+                <li>Gateway injects credentials transparently — your app sees a real request</li>
+                <li>Switch perspectives by switching URLs — no login/logout cycle</li>
+                <li>Works with Donk's SSL and DNS — each user URL gets HTTPS automatically</li>
+            </ul>
+
+            <div class="feature-video-placeholder">
+                <div class="video-icon">🎬</div>
+                <p>Video: 25–35 seconds. Creating two test users, opening both proxy URLs side by side, seeing different data.</p>
+            </div>
+        </div>
+        <div class="feature-nav">
+            <a href="donk-doctor.html">← Doctor</a>
+            <a href="environment-profiles.html">Env Profiles →</a>
+        </div>
+    </div>
+</section>
+
+<section class="feature-cta-section"><div class="container"><h3>Download Donk</h3><p>Windows 10/11 · ~230 MB · No dependencies</p><a href="../#download" class="btn btn-primary">Download for Windows</a></div></section>
+<footer><div class="container"><div class="footer-inner"><div class="footer-brand"><img src="../assets/donk_64.png" alt="Donk"> Donk</div><div class="footer-links"><a href="../">Home</a><a href="./">Features</a></div></div></div></footer>
+<script>const o=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');o.unobserve(x.target)}})},{threshold:.1});document.querySelectorAll('.reveal').forEach(el=>o.observe(el));</script>
+<script src="../assets/feature-nav.js"></script>
+</body>
+</html>

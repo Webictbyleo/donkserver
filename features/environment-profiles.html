@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Environment Profiles & Hot Reload — Donk</title>
+    <meta name="description" content="Named environment profiles — dev, staging, production. One-click switch. Hot-reload in ~1 second. Tunnels stay alive.">
+    <link rel="icon" type="image/png" href="../../assets/donk_64.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDCEDXD09F"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LDCEDXD09F');
+</script>
+</head>
+<body>
+<nav class="nav" id="nav"></nav>
+
+<section class="feature-page-hero">
+    <div class="container">
+        <span class="section-label">Profiles</span>
+        <h1>Dev. Staging. Prod.<br><span class="text-gradient">One click apart.</span></h1>
+        <p class="subtitle">Named environment profiles for each server. Switch from dev to staging to production in one click. ~1 second hot-reload. Tunnels stay alive.</p>
+    </div>
+</section>
+
+<section class="feature-content">
+    <div class="container">
+        <div class="feature-text">
+            <p>You're developing against a local database, but you need to test against the staging API for five minutes. Normally: stop the server, edit <code>.env</code>, change <code>DATABASE_URL</code> and <code>API_BASE_URL</code>, restart the server, test, then reverse everything. If you forget to switch back, you're writing to staging data for an hour.</p>
+            <p>Donk gives every server named environment profiles. <code>dev</code>, <code>staging</code>, <code>production</code> — or whatever names make sense. Each profile has its own set of environment variables. Switch with one click. The server restarts in about a second — hot-reload preserves tunnels, file watchers, and worker processes.</p>
+
+            <ul class="feature-bullets">
+                <li>Named profiles per server — dev, staging, production, or custom</li>
+                <li>Each profile stores its own environment variables</li>
+                <li>One-click switch — no file editing, no restarts from scratch</li>
+                <li>~1 second hot-reload — tunnels and file watchers stay alive</li>
+                <li>Visual indicator shows which profile is active</li>
+                <li>CLI access — <code>donk env switch my-api staging</code></li>
+                <li>Configurable in <code>donk.toml</code> — commit profiles without secrets</li>
+            </ul>
+
+            <div class="feature-video-placeholder">
+                <div class="video-icon">🎬</div>
+                <p>Video: 25–35 seconds. Switching from dev to staging profile, server restarting in ~1 second, different env vars active.</p>
+            </div>
+        </div>
+        <div class="feature-nav">
+            <a href="test-users.html">← Test Users</a>
+            <a href="git-branch-watcher.html">Git Watcher →</a>
+        </div>
+    </div>
+</section>
+
+<section class="feature-cta-section"><div class="container"><h3>Download Donk</h3><p>Windows 10/11 · ~230 MB · No dependencies</p><a href="../#download" class="btn btn-primary">Download for Windows</a></div></section>
+<footer><div class="container"><div class="footer-inner"><div class="footer-brand"><img src="../assets/donk_64.png" alt="Donk"> Donk</div><div class="footer-links"><a href="../">Home</a><a href="./">Features</a></div></div></div></footer>
+<script>const o=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');o.unobserve(x.target)}})},{threshold:.1});document.querySelectorAll('.reveal').forEach(el=>o.observe(el));</script>
+<script src="../assets/feature-nav.js"></script>
+</body>
+</html>

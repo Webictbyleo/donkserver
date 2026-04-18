@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deploy — Donk</title>
+    <meta name="description" content="Deploy via SSH/rsync with dry-run preview, revision backups, and pre/post hooks. Or push to Railway, Vercel, Fly.io, Render — directly from Donk.">
+    <link rel="icon" type="image/png" href="../../assets/donk_64.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDCEDXD09F"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LDCEDXD09F');
+</script>
+</head>
+<body>
+<nav class="nav" id="nav"></nav>
+
+<section class="feature-page-hero">
+    <div class="container">
+        <span class="section-label">Deploy</span>
+        <h1>Ship it.<br><span class="text-gradient">With real confidence.</span></h1>
+        <p class="subtitle">Deploy via SSH/rsync with dry-run preview, revision backups, and pre/post hooks. Or push to Railway, Vercel, Fly.io, Render — directly from Donk.</p>
+    </div>
+</section>
+
+<section class="feature-content">
+    <div class="container">
+        <div class="feature-text">
+            <p>You built the feature. Tested it locally. Ran the Doctor. It's ready to ship. Now you need to: commit, push, open the Railway dashboard, trigger a deploy, wait for the build log, and hope the environment variables match. Or you SSH into your VPS, pull the code, restart the service, and pray.</p>
+            <p>Donk manages the entire deploy flow. Pick a target — Railway, Vercel, Fly.io, Render, or SSH/rsync to your own server. Configure credentials once. From then on, deploy is one click.</p>
+
+            <h2>SSH/rsync Deploy</h2>
+            <p>For developers who deploy to their own servers, Donk's SSH/rsync deploy is a complete pipeline — not a wrapper around a CLI you could run yourself.</p>
+            <p>Before anything touches the server, Donk runs a <strong>dry run</strong>. You see exactly which files will be created, modified, or deleted — in a visual preview dialog with file sizes and change types highlighted. You review. You approve. Then the real deploy runs.</p>
+            <p>Every deploy creates a <strong>revision backup</strong> on the remote server — a compressed archive of the previous state. Something went wrong? Roll back to any previous revision from the revision manager. Up to 5 revisions kept by default, configurable per profile.</p>
+
+            <ul class="feature-bullets">
+                <li><strong>Dry-run preview</strong> — see exactly which files will be created, modified, or deleted before deploying</li>
+                <li><strong>Revision management</strong> — automatic backups before each deploy, roll back to any previous revision</li>
+                <li><strong>Pre-deploy hooks</strong> — run remote commands before sync (stop services, maintenance mode, DB backup)</li>
+                <li><strong>Post-deploy hooks</strong> — run remote commands after sync (restart services, clear cache, notify)</li>
+                <li><strong>Exclude patterns</strong> — keep .env, node_modules, .git, and custom patterns out of the sync</li>
+                <li><strong>SSH key selection</strong> — pick from ~/.ssh or specify a custom key path</li>
+                <li><strong>Connection testing</strong> — verify SSH access with one click before deploying</li>
+                <li><strong>Preflight checks</strong> — validates connectivity and remote path before starting</li>
+                <li><strong>Caddy config export</strong> — generate reverse proxy configuration for your deployed app</li>
+                <li><strong>Deploy history</strong> — every deploy tracked with timestamp, duration, and status</li>
+            </ul>
+
+            <h2>PaaS Targets</h2>
+            <ul class="feature-bullets">
+                <li><strong>Railway</strong> — deploy via the Railway CLI. Build packs or Docker.</li>
+                <li><strong>Vercel</strong> — push to Vercel with framework detection.</li>
+                <li><strong>Fly.io</strong> — deploy to Fly machines via the Fly CLI.</li>
+                <li><strong>Render</strong> — push to Render with auto-detection.</li>
+                <li>CLI access — <code>donk deploy my-api --target railway</code></li>
+            </ul>
+
+            <div class="feature-video-placeholder">
+                <div class="video-icon">🎬</div>
+                <p>Video: 40–50 seconds. Dry-run preview showing file changes. Approve. Watch the deploy with pre/post hooks. Revision backup created. Deploy success.</p>
+            </div>
+        </div>
+        <div class="feature-nav">
+            <a href="email-server.html">← Email</a>
+            <a href="docker-export.html">Docker Export →</a>
+        </div>
+    </div>
+</section>
+
+<section class="feature-cta-section"><div class="container"><h3>Download Donk</h3><p>Windows 10/11 · ~230 MB · No dependencies</p><a href="../#download" class="btn btn-primary">Download for Windows</a></div></section>
+<footer><div class="container"><div class="footer-inner"><div class="footer-brand"><img src="../assets/donk_64.png" alt="Donk"> Donk</div><div class="footer-links"><a href="../">Home</a><a href="./">Features</a></div></div></div></footer>
+<script>const o=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');o.unobserve(x.target)}})},{threshold:.1});document.querySelectorAll('.reveal').forEach(el=>o.observe(el));</script>
+<script src="../assets/feature-nav.js"></script>
+</body>
+</html>

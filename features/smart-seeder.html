@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Database Seeder — Donk</title>
+    <meta name="description" content="Donk reads your column names and generates realistic data. No fixtures. No config. 50 rows of real-looking data in one click.">
+    <link rel="icon" type="image/png" href="../../assets/donk_64.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDCEDXD09F"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LDCEDXD09F');
+</script>
+</head>
+<body>
+<nav class="nav" id="nav"></nav>
+
+<section class="feature-page-hero">
+    <div class="container">
+        <span class="section-label">Seeder</span>
+        <h1>Empty database?<br><span class="text-gradient">Not for long.</span></h1>
+        <p class="subtitle">Donk reads your column names and generates realistic data. A column called <code>email</code> gets emails. A column called <code>price</code> gets numbers. No fixtures. No config.</p>
+    </div>
+</section>
+
+<section class="feature-content">
+    <div class="container">
+        <div class="feature-text">
+            <p>You ran the migration. The tables exist. They're empty. You need data to build against — a list of users, some products, a few orders. Writing seed files is tedious. Copying test data from production is a security risk. Typing <code>test</code> into every field produces data that looks fake because it is.</p>
+            <p>Donk's Smart Seeder reads your schema — column names and types — and generates contextually appropriate data. A column called <code>first_name</code> gets a real first name. A column called <code>email</code> gets a valid email. A column called <code>price</code> gets a decimal number in a reasonable range. A column called <code>created_at</code> gets a timestamp in the last 90 days.</p>
+
+            <ul class="feature-bullets">
+                <li>Reads column names and types to infer the right data generator</li>
+                <li>50+ column name patterns recognized — name, email, phone, url, price, status, etc.</li>
+                <li>Foreign key awareness — generates valid references between tables</li>
+                <li>Configurable row count — 10, 50, 100, or custom</li>
+                <li>Works across all five database engines</li>
+                <li>One click from the database viewer — "Seed this table"</li>
+                <li>CLI access — <code>donk db seed mydb --table users --rows 100</code></li>
+            </ul>
+
+            <div class="feature-video-placeholder">
+                <div class="video-icon">🎬</div>
+                <p>Video: 30–40 seconds. Empty users table → click Seed → 50 rows of realistic data appear. Show the column name → data type mapping.</p>
+            </div>
+        </div>
+        <div class="feature-nav">
+            <a href="database-snapshots.html">← Snapshots</a>
+            <a href="api-mocking.html">API Mocking →</a>
+        </div>
+    </div>
+</section>
+
+<section class="feature-cta-section"><div class="container"><h3>Download Donk</h3><p>Windows 10/11 · ~230 MB · No dependencies</p><a href="../#download" class="btn btn-primary">Download for Windows</a></div></section>
+<footer><div class="container"><div class="footer-inner"><div class="footer-brand"><img src="../assets/donk_64.png" alt="Donk"> Donk</div><div class="footer-links"><a href="../">Home</a><a href="./">Features</a></div></div></div></footer>
+<script>const o=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');o.unobserve(x.target)}})},{threshold:.1});document.querySelectorAll('.reveal').forEach(el=>o.observe(el));</script>
+<script src="../assets/feature-nav.js"></script>
+</body>
+</html>

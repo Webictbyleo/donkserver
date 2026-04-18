@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Database Viewer — Donk</title>
+    <meta name="description" content="Built-in visual database browser with table list, paginated data grid, query editor, schema inspector, search, and CSV/JSON export.">
+    <link rel="icon" type="image/png" href="../../assets/donk_64.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDCEDXD09F"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LDCEDXD09F');
+</script>
+</head>
+<body>
+<nav class="nav" id="nav"></nav>
+
+<section class="feature-page-hero">
+    <div class="container">
+        <span class="section-label">Database Viewer</span>
+        <h1>See your data.<br><span class="text-gradient">Query it too.</span></h1>
+        <p class="subtitle">Built-in visual database browser with query editor. Table list, data grid, schema inspector, search, and export — all inside Donk.</p>
+    </div>
+</section>
+
+<section class="feature-content">
+    <div class="container">
+        <div class="feature-text">
+            <p>You need to check if the migration ran. Or verify that the seeded data looks right. Or find a specific user's row to debug a query. Without a database GUI, you're writing <code>psql</code> commands in a terminal, remembering the connection string, and squinting at unformatted output.</p>
+            <p>Open any database instance in Donk and you get a full visual browser. A sidebar lists every table with row counts. Click a table and you see a paginated data grid — 200 rows per page, sortable by any column, with primary keys highlighted. Toggle the schema panel to see column types, keys, defaults, and constraints.</p>
+            <p>When browsing isn't enough — run queries. A built-in SQL editor lets you write and execute queries directly inside the viewer. Hit Ctrl+Enter and the results appear in the same data grid — columns, rows, execution time. Multi-statement support means you can run migrations, inserts, and selects in sequence. For MongoDB, write JSON commands. For Redis, run CLI-style commands. Mutations are detected automatically and the table view refreshes to reflect changes.</p>
+
+            <ul class="feature-bullets">
+                <li>Table browser sidebar with row counts and a filter box</li>
+                <li>Paginated data grid — 200 rows per page, sortable, scrollable</li>
+                <li>Schema inspector — column types, primary keys, defaults, constraints</li>
+                <li><strong>Query editor</strong> — write and execute SQL, MongoDB, or Redis commands directly (Ctrl+Enter)</li>
+                <li><strong>Multi-statement support</strong> — run multiple queries in sequence, mutations auto-detected</li>
+                <li>Ctrl+F search across visible data, Ctrl+E to export</li>
+                <li>Works across SQLite, PostgreSQL, MySQL, MongoDB, and Redis</li>
+                <li>Truncate tables with confirmation dialog</li>
+                <li>Query timing displayed — see how fast your data loads</li>
+            </ul>
+
+            <div class="feature-video-placeholder">
+                <div class="video-icon">🎬</div>
+                <p>Video: 30–40 seconds. Opening a database, browsing tables, running a query in the SQL editor, toggling the schema panel, searching, exporting.</p>
+            </div>
+        </div>
+        <div class="feature-nav">
+            <a href="database-provisioning.html">← Provisioning</a>
+            <a href="database-snapshots.html">Snapshots →</a>
+        </div>
+    </div>
+</section>
+
+<section class="feature-cta-section"><div class="container"><h3>Download Donk</h3><p>Windows 10/11 · ~230 MB · No dependencies</p><a href="../#download" class="btn btn-primary">Download for Windows</a></div></section>
+<footer><div class="container"><div class="footer-inner"><div class="footer-brand"><img src="../assets/donk_64.png" alt="Donk"> Donk</div><div class="footer-links"><a href="../">Home</a><a href="./">Features</a></div></div></div></footer>
+<script>const o=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');o.unobserve(x.target)}})},{threshold:.1});document.querySelectorAll('.reveal').forEach(el=>o.observe(el));</script>
+<script src="../assets/feature-nav.js"></script>
+</body>
+</html>

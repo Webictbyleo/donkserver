@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSL & Custom Domains — Donk</title>
+    <meta name="description" content="HTTPS on localhost with one checkbox. Custom domains like myapp.test with auto-generated trusted certificates.">
+    <link rel="icon" type="image/png" href="../../assets/donk_64.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDCEDXD09F"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LDCEDXD09F');
+</script>
+</head>
+<body>
+<nav class="nav" id="nav"></nav>
+
+<section class="feature-page-hero">
+    <div class="container">
+        <span class="section-label">SSL</span>
+        <h1>HTTPS on localhost.<br><span class="text-gradient">One checkbox.</span></h1>
+        <p class="subtitle">Custom domains like <code>myapp.test</code> with auto-generated trusted certificates. No mkcert. No openssl commands. No browser warnings.</p>
+    </div>
+</section>
+
+<section class="feature-content">
+    <div class="container">
+        <div class="feature-text">
+            <p>Some features don't work without HTTPS. Secure cookies, service workers, WebAuthn, certain OAuth flows — they all demand a secure context. In production, your cloud provider handles it. In development, you're on your own.</p>
+            <p>Donk generates a local Certificate Authority, installs it in the Windows trust store, and issues certificates for any domain you configure. Check the "Enable SSL" box. Your server is now available on <code>https://myapp.test</code> with a green padlock. The certificate is trusted — no browser warnings, no "proceed anyway" clicks.</p>
+
+            <ul class="feature-bullets">
+                <li>One checkbox to enable HTTPS — no config files, no CLI commands</li>
+                <li>Custom <code>.test</code> domains — <code>myapp.test</code>, <code>api.myapp.test</code>, anything</li>
+                <li>Auto-generated local CA installed in the Windows trust store</li>
+                <li>Green padlock in every browser — Chrome, Firefox, Edge all trust it</li>
+                <li>Wildcard certificates for subdomain routing — <code>*.myapp.test</code></li>
+                <li>Caddy reverse proxy handles the HTTPS termination — your app sees plain HTTP</li>
+                <li>Works across LAN — your phone trusts it too after one CA install</li>
+            </ul>
+
+            <div class="feature-video-placeholder">
+                <div class="video-icon">🎬</div>
+                <p>Video: 20–30 seconds. Enabling SSL on a server, seeing the green padlock, opening on a phone.</p>
+            </div>
+        </div>
+        <div class="feature-nav">
+            <a href="sharing.html">← Sharing</a>
+            <a href="dns-server.html">DNS Server →</a>
+        </div>
+    </div>
+</section>
+
+<section class="feature-cta-section"><div class="container"><h3>Download Donk</h3><p>Windows 10/11 · ~230 MB · No dependencies</p><a href="../#download" class="btn btn-primary">Download for Windows</a></div></section>
+<footer><div class="container"><div class="footer-inner"><div class="footer-brand"><img src="../assets/donk_64.png" alt="Donk"> Donk</div><div class="footer-links"><a href="../">Home</a><a href="./">Features</a></div></div></div></footer>
+<script>const o=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');o.unobserve(x.target)}})},{threshold:.1});document.querySelectorAll('.reveal').forEach(el=>o.observe(el));</script>
+<script src="../assets/feature-nav.js"></script>
+</body>
+</html>

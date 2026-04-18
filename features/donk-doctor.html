@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donk Doctor — One-Click Security Scanner — Donk</title>
+    <meta name="description" content="One-click security health check. Dependency CVEs, hardcoded secrets, static analysis, route intelligence, and live endpoint probing.">
+    <link rel="icon" type="image/png" href="../../assets/donk_64.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDCEDXD09F"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LDCEDXD09F');
+</script>
+</head>
+<body>
+<nav class="nav" id="nav"></nav>
+
+<section class="feature-page-hero">
+    <div class="container">
+        <span class="section-label">Security</span>
+        <h1>Your code works.<br><span class="text-gradient">But is it safe?</span></h1>
+        <p class="subtitle">Donk Doctor is a one-click security health check. It reads your entire project — source code, dependencies, live endpoints — and comes back with a straight answer.</p>
+    </div>
+</section>
+
+<section class="feature-content">
+    <div class="container">
+        <div class="feature-text">
+            <p>You built a feature. It works. The tests pass. But you have a nagging feeling — is that admin endpoint actually protected? Did the dependency update introduce a CVE? Is there still an API key hardcoded in that utility file from three months ago?</p>
+            <p>Security scanners exist, but they're enterprise tools. They take 45 minutes to configure, produce 200-page reports with false positives, and cost more than your entire hosting bill. Donk Doctor is the opposite: one click, one report, real findings.</p>
+
+            <h2>What Doctor Checks</h2>
+            <ul class="feature-bullets">
+                <li><strong>Dependency audit</strong> — every package in your lockfile scanned against the CVE database. Flagged by severity. Fixed version suggested when available.</li>
+                <li><strong>Hardcoded secrets</strong> — API keys, passwords, and tokens that shouldn't be in your source code. High-entropy strings matched against provider patterns.</li>
+                <li><strong>Static analysis (SAST)</strong> — full engine with 20+ patterns at AST-level precision: <code>eval()</code>, <code>exec()</code>, SQL injection, command injection, insecure deserialization, debug flags in production, permissive CORS, open redirects, and more.</li>
+                <li><strong>Route intelligence</strong> — full AST-based extraction of every API endpoint with correct prefixes. Not grep — actual code understanding.</li>
+                <li><strong>Live endpoint probing</strong> — hits every write route (POST, PUT, DELETE) without credentials. If it returns 200 instead of 401, that's a finding.</li>
+                <li><strong>Sensitive route exposure</strong> — admin panels, health checks, license endpoints, integration routes that should not be publicly accessible.</li>
+                <li><strong>Semgrep integration</strong> — when available, hundreds of additional rules across OWASP Top 10.</li>
+            </ul>
+
+            <p>The report is color-coded. Red means fix it before you ship. Amber means review it. Green means you're clear. Each finding includes the exact file, line number, and a plain-English explanation of why it matters.</p>
+
+            <div class="feature-video-placeholder">
+                <div class="video-icon">🎬</div>
+                <p>Video: 40–50 seconds. Running Doctor on a real project. Watch it discover an unprotected admin endpoint and a hardcoded API key. Show the fix.</p>
+            </div>
+        </div>
+        <div class="feature-nav">
+            <a href="http-gateway.html">← Gateway</a>
+            <a href="test-users.html">Test Users →</a>
+        </div>
+    </div>
+</section>
+
+<section class="feature-cta-section"><div class="container"><h3>Download Donk</h3><p>Windows 10/11 · ~230 MB · No dependencies</p><a href="../#download" class="btn btn-primary">Download for Windows</a></div></section>
+<footer><div class="container"><div class="footer-inner"><div class="footer-brand"><img src="../assets/donk_64.png" alt="Donk"> Donk</div><div class="footer-links"><a href="../">Home</a><a href="./">Features</a></div></div></div></footer>
+<script>const o=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');o.unobserve(x.target)}})},{threshold:.1});document.querySelectorAll('.reveal').forEach(el=>o.observe(el));</script>
+<script src="../assets/feature-nav.js"></script>
+</body>
+</html>

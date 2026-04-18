@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Mocking & Interception — Donk</title>
+    <meta name="description" content="75+ API providers mocked. Backend and browser interception. SSE streaming. $0.00 spent. Always.">
+    <link rel="icon" type="image/png" href="../../assets/donk_64.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDCEDXD09F"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LDCEDXD09F');
+</script>
+</head>
+<body>
+<nav class="nav" id="nav"></nav>
+
+<section class="feature-page-hero">
+    <div class="container">
+        <span class="section-label">API Mocking</span>
+        <h1>75+ paid APIs.<br><span class="text-gradient-warm">$0.00 spent.</span></h1>
+        <p class="subtitle">Develop against OpenAI, Stripe, Twilio, and 70 more without spending a cent — or even having an API key. Backend and browser calls intercepted transparently.</p>
+    </div>
+</section>
+
+<section class="feature-content">
+    <div class="container">
+        <div class="feature-text">
+            <p>You're building an AI feature. Every test run costs money — $0.003 per GPT-4 completion, but you're testing 200 times a day while iterating on the prompt. By Friday, your dev costs are higher than the hosting bill. And that's just OpenAI. Factor in Stripe test charges, Twilio SMS tests, SendGrid email sends — the development cost of building against paid APIs is real.</p>
+            <p>Donk runs a local mock server that replaces 75+ API providers with zero-cost, instant, realistic responses. Your server calls <code>api.openai.com</code>? Donk intercepts it via <code>HTTP_PROXY</code> and returns a mock completion with proper schema, streaming tokens over SSE just like the real API. Your browser calls <code>api.stripe.com</code> via <code>fetch()</code>? The gateway intercepts it, injects CORS headers, and returns a mock payment intent.</p>
+
+            <h2>All 75+ Providers</h2>
+            <div class="mock-cards-col" style="margin: 2rem 0 3rem; display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem;">
+                <div class="mock-card"><h4>AI / LLM <span class="count">16</span></h4><p style="font-size:0.85rem;color:rgba(228,230,240,0.5);margin:0;">OpenAI, Anthropic, Google AI, Azure OpenAI, Bedrock, Mistral, Cohere, Groq, Perplexity, Together, Fireworks, OpenRouter, AI21, Replicate, HuggingFace, NLP Cloud</p></div>
+                <div class="mock-card"><h4>Payments <span class="count">7</span></h4><p style="font-size:0.85rem;color:rgba(228,230,240,0.5);margin:0;">Stripe, PayPal, Square, Paddle, LemonSqueezy, Razorpay, Adyen</p></div>
+                <div class="mock-card"><h4>Email <span class="count">6</span></h4><p style="font-size:0.85rem;color:rgba(228,230,240,0.5);margin:0;">SendGrid, Mailgun, Postmark, Resend, Amazon SES, Brevo</p></div>
+                <div class="mock-card"><h4>SMS & Voice <span class="count">4</span></h4><p style="font-size:0.85rem;color:rgba(228,230,240,0.5);margin:0;">Twilio, Vonage, Plivo, MessageBird</p></div>
+                <div class="mock-card"><h4>Auth <span class="count">3</span></h4><p style="font-size:0.85rem;color:rgba(228,230,240,0.5);margin:0;">Firebase Auth, Auth0, Clerk</p></div>
+                <div class="mock-card"><h4>Search, Maps, CRM, and 37 more</h4><p style="font-size:0.85rem;color:rgba(228,230,240,0.5);margin:0;">Algolia, Mapbox, HubSpot, Plaid, Shopify, DeepL, Pusher, DocuSign, Supabase, and many more</p></div>
+            </div>
+
+            <h2>How Interception Works</h2>
+            <ul class="feature-bullets">
+                <li><strong>Server-side</strong> — <code>HTTP_PROXY</code> injected into your backend process. Every outgoing request to mocked hostnames redirected to the mock server. Even hardcoded SDKs.</li>
+                <li><strong>Browser-side</strong> — The gateway intercepts <code>fetch()</code> calls to mocked API hostnames. CORS headers injected. OPTIONS preflight handled.</li>
+                <li><strong>Per-provider control</strong> — Mock OpenAI but let Stripe hit the real API. Toggle per provider, per project.</li>
+                <li><strong>SSE streaming</strong> — OpenAI and Anthropic completions stream token by token, just like the real API</li>
+                <li><strong>Custom routes</strong> — Add your own mock endpoints for edge-case testing</li>
+                <li>Request log with timestamps and matched routes</li>
+            </ul>
+
+            <div class="feature-video-placeholder">
+                <div class="video-icon">🎬</div>
+                <p>Video: 40–50 seconds. Building an OpenAI chat feature with mocked completions. Show streaming response. Toggle to real API.</p>
+            </div>
+        </div>
+        <div class="feature-nav">
+            <a href="smart-seeder.html">← Seeder</a>
+            <a href="http-gateway.html">HTTP Gateway →</a>
+        </div>
+    </div>
+</section>
+
+<section class="feature-cta-section"><div class="container"><h3>Download Donk</h3><p>Windows 10/11 · ~230 MB · No dependencies</p><a href="../#download" class="btn btn-primary">Download for Windows</a></div></section>
+<footer><div class="container"><div class="footer-inner"><div class="footer-brand"><img src="../assets/donk_64.png" alt="Donk"> Donk</div><div class="footer-links"><a href="../">Home</a><a href="./">Features</a></div></div></div></footer>
+<script>const o=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');o.unobserve(x.target)}})},{threshold:.1});document.querySelectorAll('.reveal').forEach(el=>o.observe(el));</script>
+<script src="../assets/feature-nav.js"></script>
+</body>
+</html>

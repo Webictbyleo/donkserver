@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>One Dashboard — Donk</title>
+    <meta name="description" content="Start, stop, restart all your dev servers from one window. Real-time CPU, memory, GPU monitoring. System tray integration.">
+    <link rel="icon" type="image/png" href="../../assets/donk_64.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDCEDXD09F"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LDCEDXD09F');
+</script>
+</head>
+<body>
+
+<nav class="nav" id="nav"></nav>
+
+<section class="feature-page-hero">
+    <div class="container">
+        <span class="section-label">Dashboard</span>
+        <h1>Multiple servers.<br><span class="text-gradient">One window.</span></h1>
+        <p class="subtitle">You've been running dev servers by opening a terminal, typing a command, and hoping nothing crashes silently in the background. Donk replaces that with a single dashboard.</p>
+    </div>
+</section>
+
+<section class="feature-content">
+    <div class="container">
+        <div class="feature-text">
+            <p>You're working on a project that needs a FastAPI backend, a Next.js frontend, and a background worker. Three terminals. You minimize one, forget which is which, come back twenty minutes later and one of them has silently crashed. You don't notice until you hit a 502 and lose your train of thought debugging the wrong thing.</p>
+            <p>Donk puts everything in one place. Every server in a single table — name, framework, status, CPU, memory, GPU usage, address. Green dot means running. Red means crashed. Amber means starting. You see the state of your entire development environment in one glance.</p>
+            <p>Start a server. Stop it. Restart it. One click each. No terminal, no command to remember, no flag to look up. The debug console below the server list shows real-time output — errors in red, warnings in amber, your output in white. HTTP access logs go to a separate Request Log tab so they don't drown your debug output.</p>
+            <p>When you're not actively looking at Donk, it sits in the system tray. Your servers keep running. Click the tray icon and you're back immediately. It starts with Windows if you want it to — your dev environment is live before you open VS Code.</p>
+
+            <ul class="feature-bullets">
+                <li>Server table with name, framework, status, CPU, memory, GPU, address</li>
+                <li>One-click start, stop, restart — no terminal commands</li>
+                <li>Color-coded debug console — errors red, warnings amber, info blue</li>
+                <li>HTTP access logs separated into a dedicated Request Log tab</li>
+                <li>System tray integration — runs in the background, click to restore</li>
+                <li>Auto-start with Windows — servers running before your editor opens</li>
+                <li>Command palette (Ctrl+K) — quick access to any action</li>
+            </ul>
+
+            <div class="feature-video-placeholder">
+                <div class="video-icon">🎬</div>
+                <p>Video: 30–40 second walkthrough of the dashboard — starting servers, reading stats, navigating the debug console.</p>
+            </div>
+        </div>
+
+        <div class="feature-nav">
+            <span></span>
+            <a href="framework-templates.html">Next: Framework Templates →</a>
+        </div>
+    </div>
+</section>
+
+<section class="feature-cta-section">
+    <div class="container">
+        <h3>Download Donk</h3>
+        <p>Windows 10/11 · ~230 MB · No dependencies</p>
+        <a href="../#download" class="btn btn-primary">Download for Windows</a>
+    </div>
+</section>
+
+<footer><div class="container"><div class="footer-inner"><div class="footer-brand"><img src="../assets/donk_64.png" alt="Donk"> Donk</div><div class="footer-links"><a href="../">Home</a><a href="./">Features</a></div></div></div></footer>
+<script>const o=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');o.unobserve(x.target)}})},{threshold:.1});document.querySelectorAll('.reveal').forEach(el=>o.observe(el));</script>
+<script src="../assets/feature-nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Background Workers — Donk</title>
+    <meta name="description" content="Run background jobs on a schedule. Cron expressions, concurrency limits, auto-pause when resources are maxed.">
+    <link rel="icon" type="image/png" href="../../assets/donk_64.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDCEDXD09F"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LDCEDXD09F');
+</script>
+</head>
+<body>
+<nav class="nav" id="nav"></nav>
+
+<section class="feature-page-hero">
+    <div class="container">
+        <span class="section-label">Workers</span>
+        <h1>Background jobs.<br><span class="text-gradient">Without the overhead.</span></h1>
+        <p class="subtitle">Define worker processes alongside your servers. Cron schedules, on-demand triggers, concurrency limits, and auto-pause when your laptop is under load.</p>
+    </div>
+</section>
+
+<section class="feature-content">
+    <div class="container">
+        <div class="feature-text">
+            <p>Your app sends emails on a queue. Processes image uploads in the background. Runs a Celery worker or a Bull job processor. In production, these are separate services. In development, they're "I forgot to start the worker again and wondered why emails aren't sending."</p>
+            <p>Donk lets you define workers as part of your server configuration. A worker is any command — a Celery process, a custom script, a cron-style task. Workers start with the server, run on schedule or on-demand, and auto-pause when CPU or memory is maxed so your laptop doesn't become unusable.</p>
+
+            <ul class="feature-bullets">
+                <li>Define workers alongside servers in <code>donk.toml</code></li>
+                <li>Cron expressions — run every minute, every hour, at midnight</li>
+                <li>On-demand triggers — run once now from the GUI or CLI</li>
+                <li>Concurrency limit — max 1 or max N concurrent runs</li>
+                <li>Auto-pause when CPU or memory exceeds configurable thresholds</li>
+                <li>Workers start with the server, stop with the server</li>
+                <li>Dedicated Worker Log tab in the debug console</li>
+                <li>VS Code sidebar shows worker status — running, idle, paused, failed</li>
+            </ul>
+
+            <div class="feature-video-placeholder">
+                <div class="video-icon">🎬</div>
+                <p>Video: 25–35 seconds. A cron worker running every 30 seconds, processing a queue, logs visible in the Worker Log tab.</p>
+            </div>
+        </div>
+        <div class="feature-nav">
+            <a href="git-branch-watcher.html">← Git Watcher</a>
+            <a href="email-server.html">Email →</a>
+        </div>
+    </div>
+</section>
+
+<section class="feature-cta-section"><div class="container"><h3>Download Donk</h3><p>Windows 10/11 · ~230 MB · No dependencies</p><a href="../#download" class="btn btn-primary">Download for Windows</a></div></section>
+<footer><div class="container"><div class="footer-inner"><div class="footer-brand"><img src="../assets/donk_64.png" alt="Donk"> Donk</div><div class="footer-links"><a href="../">Home</a><a href="./">Features</a></div></div></div></footer>
+<script>const o=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');o.unobserve(x.target)}})},{threshold:.1});document.querySelectorAll('.reveal').forEach(el=>o.observe(el));</script>
+<script src="../assets/feature-nav.js"></script>
+</body>
+</html>
