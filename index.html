@@ -1542,7 +1542,13 @@
         <div class="reveal">
             <h2>Be first in line. <span class="text-gradient">Launching soon.</span></h2>
             <p>One-time purchase. 1 year of updates. Dev & Enterprise plans. Join the waitlist and we'll let you know the moment it's ready.</p>
-            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfShO7jPN9VPOwE-L3y8jox9Ft1es42yPcL6LgOlqH0CgvYnw/viewform?embedded=true" width="640" height="593" frameborder="0" marginheight="0" marginwidth="0" style="max-width:100%;border-radius:12px;">Loading…</iframe>
+            <form class="waitlist-form waitlist-form-cta" id="ctaWaitlistForm" onsubmit="return handleWaitlist(event, this)">
+                <div class="waitlist-input-wrap">
+                    <input type="email" name="email" placeholder="you@example.com" required class="waitlist-input" autocomplete="email">
+                    <button type="submit" class="btn btn-primary btn-waitlist">Join the Waitlist</button>
+                </div>
+                <div class="waitlist-msg" id="ctaWaitlistMsg"></div>
+            </form>
             <p class="cta-meta">Windows 10/11 &middot; ~230 MB &middot; No dependencies required</p>
         </div>
     </div>

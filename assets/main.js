@@ -499,21 +499,18 @@ function handleWaitlist(e, form) {
     msgEl.textContent = '';
     msgEl.className = 'waitlist-msg';
 
-    fetch('https://dev.donkserver.com/api/waitlist', {
+    const formData = new FormData();
+    formData.append('emailAddress', email);
+
+    fetch('https://docs.google.com/forms/d/e/1FAIpQLSfShO7jPN9VPOwE-L3y8jox9Ft1es42yPcL6LgOlqH0CgvYnw/formResponse', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: email, source: 'landing' }),
+        mode: 'no-cors',
+        body: formData,
     })
-    .then(function(res) { return res.json(); })
-    .then(function(data) {
-        if (data.ok) {
-            msgEl.textContent = data.message || "You're on the list!";
-            msgEl.className = 'waitlist-msg success';
-            form.email.value = '';
-        } else {
-            msgEl.textContent = data.error || 'Something went wrong. Please try again.';
-            msgEl.className = 'waitlist-msg error';
-        }
+    .then(function() {
+        msgEl.textContent = "You're on the list! We'll be in touch.";
+        msgEl.className = 'waitlist-msg success';
+        form.email.value = '';
     })
     .catch(function() {
         msgEl.textContent = 'Network error. Please try again.';
